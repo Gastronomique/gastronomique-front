@@ -1,39 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from './auth.service';
+import { AuthService } from '../_services/auth.service';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
-  username!: string;
-  password!: string;
-  errorMessage = 'Invalid Credentials';
-  successMessage!: string;
-  invalidLogin = false;
-  loginSuccess = false;
+  form: any = {
+    username: null,
+    password: null
+  };
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService) {   }
+  constructor(private authService: AuthService, private storageService: StorageService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+      this.roles = this.storageService.getUser().roles;
+    }
   }
 
-  handleLogin() {
-    this.authenticationService.authenticationService(this.username, this.password).subscribe(()=> {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.successMessage = 'Login Successful.';
-      this.router.navigate(['/home']);
-    }, (error) => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
-      this.authenticationService.logout();
+  onSubmit(): void {
+    const { username, password } = this.form;
+
+    this.authService.login(username, password).subscribe({
+      next: data => {
+        this.storageService.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.storageService.getUser().roles;
+        this.reloadPage();
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
     });
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 }

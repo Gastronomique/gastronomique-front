@@ -29,7 +29,7 @@ export class StorageService {
   }
 
   public getToken():any {
-    return localStorage.getItem('token');
+    return this.getUser().token;
   }
 
   public isLoggedIn(): boolean {

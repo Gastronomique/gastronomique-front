@@ -8,15 +8,15 @@
       novalidate
     >
       <div class="form-group">
-        <label for="username"><strong>Usuário:</strong></label>
+        <label for="username"><strong>Nome Completo:</strong></label>
         <input
           type="text"
           class="form-control"
           name="username"
-          [(ngModel)]="form.username"
+          [(ngModel)]="form.fullName"
           required
-          minlength="3"
-          maxlength="20"
+          minlength="2"
+          maxlength="100"
           #username="ngModel"
           [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
         />

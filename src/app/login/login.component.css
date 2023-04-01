@@ -4,20 +4,17 @@ label {
 }
 
 .card-container.card {
-  max-width: 400px !important;
-  padding: 40px 40px;
+  max-width: max-content !important;
+  padding: 10px 25px;
+  border-radius: 15px;
 }
 
 .card {
   background-color: #f7f7f7;
-  padding: 20px 25px 30px;
+  padding: auto;
   margin: 0 auto 25px;
   margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -26,7 +23,26 @@ label {
   height: 96px;
   margin: 0 auto 10px;
   display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+.btn-block {
+  border: none;
+  height: 7vh;
+  border-radius: 15px;
+}
+
+#btn-login {
+  color: #000;
+  background-color: #52EA85;
+}
+
+#btn-esqueci-a-senha {
+  color: #000;
+  background-color: #2FB0E7;
+}
+
+input {
+  height: 6vh;
+  border-radius: 10px;
 }

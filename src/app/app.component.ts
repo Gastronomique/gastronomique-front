@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { StorageService } from './_services/storage.service';
-import { AuthService } from './_services/auth.service';
-import { EventBusService } from './_shared/event-bus.service';
+import { StorageService } from './security/_services/storage.service';
+import { AuthService } from './security/_services/auth.service';
+import { EventBusService } from './security/_shared/event-bus.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ import { EventBusService } from './_shared/event-bus.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
 
   private roles: string[] = [];
   isLoggedIn = false;
@@ -22,7 +26,8 @@ export class AppComponent {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private eventBusService: EventBusService
+    private eventBusService: EventBusService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,4 +55,13 @@ export class AppComponent {
       }
     });
   }
+
+  navegarCadastroInsumo():void {
+    this.router.navigate(['insumo/inserir']);
+  }
+
+  navegarListagemInsumos():void {
+    this.router.navigate(['insumo/listagem']);
+  }
+
 }

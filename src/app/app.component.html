@@ -3,10 +3,18 @@
     <a href="#" class="navbar-brand">Gastronomique</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin</a>
+        <button id="btn-menu-admin" mat-button [matMenuTriggerFor]="menu">Admin</button>
+          <mat-menu #menu="matMenu">
+          <button mat-menu-item>Usuários</button>
+          <button mat-menu-item>Requisições</button>
+        </mat-menu>
       </li>
       <li class="nav-item" *ngIf="showProfessorBoard">
-        <a href="/professor" class="nav-link" routerLink="professor">Professor</a>
+        <button id="btn-menu-insumos" mat-button [matMenuTriggerFor]="menu">Insumos</button>
+          <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="navegarListagemInsumos()">Listar</button>
+          <button mat-menu-item (click)="navegarCadastroInsumo()">Cadastrar</button>
+        </mat-menu>
       </li>
     </ul>
 

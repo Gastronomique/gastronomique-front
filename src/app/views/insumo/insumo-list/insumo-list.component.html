@@ -4,6 +4,10 @@
       <h1>Listagem de insumos</h1>
   </div>
 
+  <button (click)="novoInsumo()" mat-stroked-button color="primary" id="btn-novo-insumo">
+    <i class="bi bi-plus-lg"></i> Novo Insumo
+  </button>
+
   <div class="mat-elevation-z8 content-table">
       <table class="table" mat-table [dataSource]="insumos">
           <!-- Position Column -->

@@ -33,4 +33,9 @@ export class InsumoListComponent implements OnInit {
   editarInsumo(id: string) {
     this.router.navigate([`insumo/editar/${id}`]);
   }
+
+  novoInsumo() {
+    this.router.navigate(['insumo/inserir']);
+  }
+
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Insumo } from './insumo.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class InsumoService {
 
   baseUrl: String = "http://localhost:8080/insumos";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
   buscarTodosInsumos(): Observable<Insumo[]> {
     const url = `${this.baseUrl}`;
@@ -37,4 +38,11 @@ export class InsumoService {
     return this.http.delete<void>(url);
   }
 
+  mensagem(str: String): void {
+    this._snack.open(`${str}`, 'OK', {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 4000
+    })
+  }
 }

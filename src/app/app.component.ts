@@ -64,4 +64,12 @@ export class AppComponent {
     this.router.navigate(['insumo/listagem']);
   }
 
+  navegarCadastroLaboratorio():void {
+    this.router.navigate(['laboratorio/inserir']);
+  }
+
+  navegarListagemLaboratorios():void {
+    this.router.navigate(['laboratorio/listagem']);
+  }
+
 }

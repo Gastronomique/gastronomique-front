@@ -10,6 +10,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +26,10 @@ import { InsumoCreateComponent } from './views/insumo/insumo-create/insumo-creat
 import { InsumoEditComponent } from './views/insumo/insumo-edit/insumo-edit.component';
 import { InsumoListComponent } from './views/insumo/insumo-list/insumo-list.component';
 import { InsumoDeleteComponent } from './views/insumo/insumo-delete/insumo-delete.component';
+import { LaboratorioCreateComponent } from './views/laboratorio/laboratorio-create/laboratorio-create.component';
+import { LaboratorioDeleteComponent } from './views/laboratorio/laboratorio-delete/laboratorio-delete.component';
+import { LaboratorioEditComponent } from './views/laboratorio/laboratorio-edit/laboratorio-edit.component';
+import { LaboratorioListComponent } from './views/laboratorio/laboratorio-list/laboratorio-list.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +43,10 @@ import { InsumoDeleteComponent } from './views/insumo/insumo-delete/insumo-delet
     InsumoEditComponent,
     InsumoListComponent,
     InsumoDeleteComponent,
+    LaboratorioCreateComponent,
+    LaboratorioDeleteComponent,
+    LaboratorioEditComponent,
+    LaboratorioListComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +62,9 @@ import { InsumoDeleteComponent } from './views/insumo/insumo-delete/insumo-delet
     MatButtonModule,
     MatMenuModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    CommonModule,
+    MatSnackBarModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

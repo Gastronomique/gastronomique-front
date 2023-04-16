@@ -1,7 +1,7 @@
-export interface Insumo {
-  id?: String,
-  denominacao: String,
-  unidadeDeMedida: String,
-  descricao: String,
-  tipoInsumo: String
+export class Insumo {
+  id?: String;
+  denominacao!: String;
+  unidadeDeMedida: any;
+  descricao!: String;
+  tipoInsumo: any;
 }

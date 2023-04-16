@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Insumo } from '../insumo.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InsumoService } from '../insumo.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-insumo-edit',
@@ -12,10 +13,15 @@ export class InsumoEditComponent implements OnInit {
 
   insumo: Insumo = {
     denominacao: '',
-    unidadeDeMedida: '',
+    unidadeDeMedida: null,
     descricao: '',
-    tipoInsumo: ''
+    tipoInsumo: null
   }
+
+  denominacao = new FormControl('', [Validators.required]);
+  unidadeDeMedida = new FormControl('', [Validators.required]);
+  descricao = new FormControl('', []);
+  tipoInsumo = new FormControl('', [Validators.required]);
 
   constructor(
     private service: InsumoService,

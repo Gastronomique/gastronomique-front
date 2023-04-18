@@ -25,7 +25,7 @@ export class InsumoCreateComponent implements OnInit {
 
   constructor(
     private service: InsumoService,
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -42,5 +42,5 @@ export class InsumoCreateComponent implements OnInit {
     );
   }
 
-  cancelar(): void { this.router.navigate(['home']); }
+  cancelar(): void { this.router.navigate(['insumo/listagem']); }
 }

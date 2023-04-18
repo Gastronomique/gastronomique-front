@@ -19,7 +19,7 @@ export class LaboratorioCreateComponent implements OnInit {
 
   constructor(
     private service: LaboratorioService,
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,5 +36,5 @@ export class LaboratorioCreateComponent implements OnInit {
     );
   }
 
-  cancelar(): void { this.router.navigate(['home']); }
+  cancelar(): void { this.router.navigate(['laboratorio/listagem']); }
 }

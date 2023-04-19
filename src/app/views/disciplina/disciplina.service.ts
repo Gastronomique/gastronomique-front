@@ -13,8 +13,8 @@ export class DisciplinaService {
 
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
-  buscarTodosCursosPorDisciplina(id: string): Observable<Disciplina[]> {
-    const url = `${this.baseUrl}/cursos/${id}`;
+  buscarTodosCursosPorCursoId(id: string): Observable<Disciplina[]> {
+    const url = `${this.baseUrl}/curso/${id}`;
     return this.http.get<Disciplina[]>(url);
   }
 

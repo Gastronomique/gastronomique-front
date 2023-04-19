@@ -18,6 +18,7 @@ import { CursoCreateComponent } from './views/curso/curso-create/curso-create.co
 import { CursoListComponent } from './views/curso/curso-list/curso-list.component';
 import { CursoDeleteComponent } from './views/curso/curso-delete/curso-delete.component';
 import { CursoEditComponent } from './views/curso/curso-edit/curso-edit.component';
+import { DisciplinaListComponent } from './views/disciplina/disciplina-list/disciplina-list.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
   {
     path: 'curso/editar/:id',
     component: CursoEditComponent
+  },
+  {
+    path: 'disciplina/curso/:id/:nomeCurso',
+    component: DisciplinaListComponent
   },
   {
     path: '',

@@ -14,6 +14,10 @@ import { LaboratorioCreateComponent } from './views/laboratorio/laboratorio-crea
 import { LaboratorioListComponent } from './views/laboratorio/laboratorio-list/laboratorio-list.component';
 import { LaboratorioDeleteComponent } from './views/laboratorio/laboratorio-delete/laboratorio-delete.component';
 import { LaboratorioEditComponent } from './views/laboratorio/laboratorio-edit/laboratorio-edit.component';
+import { CursoCreateComponent } from './views/curso/curso-create/curso-create.component';
+import { CursoListComponent } from './views/curso/curso-list/curso-list.component';
+import { CursoDeleteComponent } from './views/curso/curso-delete/curso-delete.component';
+import { CursoEditComponent } from './views/curso/curso-edit/curso-edit.component';
 
 const routes: Routes = [
   {
@@ -67,6 +71,22 @@ const routes: Routes = [
   {
     path: 'laboratorio/editar/:id',
     component: LaboratorioEditComponent
+  },
+  {
+    path: 'curso/inserir',
+    component: CursoCreateComponent
+  },
+  {
+    path: 'curso/listagem',
+    component: CursoListComponent
+  },
+  {
+    path: 'curso/excluir/:id',
+    component: CursoDeleteComponent
+  },
+  {
+    path: 'curso/editar/:id',
+    component: CursoEditComponent
   },
   {
     path: '',

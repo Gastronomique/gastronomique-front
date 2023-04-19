@@ -72,4 +72,12 @@ export class AppComponent {
     this.router.navigate(['laboratorio/listagem']);
   }
 
+  navegarCadastroCurso():void {
+    this.router.navigate(['curso/inserir']);
+  }
+
+  navegarListagemCursos():void {
+    this.router.navigate(['curso/listagem']);
+  }
+
 }

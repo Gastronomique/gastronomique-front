@@ -30,6 +30,14 @@ import { LaboratorioCreateComponent } from './views/laboratorio/laboratorio-crea
 import { LaboratorioDeleteComponent } from './views/laboratorio/laboratorio-delete/laboratorio-delete.component';
 import { LaboratorioEditComponent } from './views/laboratorio/laboratorio-edit/laboratorio-edit.component';
 import { LaboratorioListComponent } from './views/laboratorio/laboratorio-list/laboratorio-list.component';
+import { CursoCreateComponent } from './views/curso/curso-create/curso-create.component';
+import { CursoDeleteComponent } from './views/curso/curso-delete/curso-delete.component';
+import { CursoEditComponent } from './views/curso/curso-edit/curso-edit.component';
+import { CursoListComponent } from './views/curso/curso-list/curso-list.component';
+import { DisciplinaCreateComponent } from './views/disciplina/disciplina-create/disciplina-create.component';
+import { DisciplinaDeleteComponent } from './views/disciplina/disciplina-delete/disciplina-delete.component';
+import { DisciplinaEditComponent } from './views/disciplina/disciplina-edit/disciplina-edit.component';
+import { DisciplinaListComponent } from './views/disciplina/disciplina-list/disciplina-list.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +55,14 @@ import { LaboratorioListComponent } from './views/laboratorio/laboratorio-list/l
     LaboratorioDeleteComponent,
     LaboratorioEditComponent,
     LaboratorioListComponent,
+    CursoCreateComponent,
+    CursoDeleteComponent,
+    CursoEditComponent,
+    CursoListComponent,
+    DisciplinaCreateComponent,
+    DisciplinaDeleteComponent,
+    DisciplinaEditComponent,
+    DisciplinaListComponent,
   ],
   imports: [
     BrowserModule,

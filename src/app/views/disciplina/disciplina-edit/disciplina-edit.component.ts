@@ -41,11 +41,11 @@ export class DisciplinaEditComponent implements OnInit {
 
   editarDisciplina(): void {
     this.service.editarDisciplina(this.disciplina).subscribe((resposta) => {
-      this.router.navigate([`curso/listagem`]);
+      this.router.navigate([`disciplina/curso/${this.disciplina.curso?.id}`]);
     });
   }
 
   cancelar(): void {
-    this.router.navigate(['curso/listagem']);
+    this.router.navigate([`disciplina/curso/${this.disciplina.curso?.id}`]);
   }
 }

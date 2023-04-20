@@ -18,6 +18,26 @@ export class DisciplinaService {
     return this.http.get<Disciplina[]>(url);
   }
 
+  buscarDisciplinaPorId(id: String): Observable<Disciplina> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Disciplina>(url);
+  }
+
+  inserirDisciplina(disciplina: Disciplina, cursoId: string): Observable<Disciplina> {
+    const url = `${this.baseUrl}/curso/${cursoId}`;
+    return this.http.post<Disciplina>(url, disciplina);
+  }
+
+  editarDisciplina(disciplina: Disciplina): Observable<void> {
+    const url = `${this.baseUrl}/${disciplina.id}`;
+    return this.http.put<void>(url, disciplina);
+  }
+
+  excluirDisciplina(id: String): Observable<void> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<void>(url);
+  }
+
   mensagem(str: String): void {
     this._snack.open(`${str}`, 'OK', {
       horizontalPosition: 'center',

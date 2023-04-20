@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Disciplina } from '../disciplina.model';
 import { DisciplinaService } from '../disciplina.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CursoService } from '../../curso/curso.service';
+import { Curso } from '../../curso/curso.model';
 
 @Component({
   selector: 'app-disciplina-list',
@@ -12,13 +14,22 @@ export class DisciplinaListComponent implements OnInit {
 
   disciplinas: Disciplina[] = [];
   displayedColumns: string[] = ['id', 'nome', 'acoes'];
-  nomeCurso!: string;
 
-  constructor(private service: DisciplinaService, private router: Router, private route: ActivatedRoute) { }
+  curso: Curso = {
+    id: '',
+    nome: ''
+  }
+
+  constructor(
+      private service: DisciplinaService,
+      private router: Router,
+      private route: ActivatedRoute,
+      private cursoService: CursoService
+    ) { }
 
   ngOnInit(): void {
-    this.nomeCurso = this.route.snapshot.paramMap.get('nomeCurso')!;
     this.buscarTodosCursosPorCursoId(this.route.snapshot.paramMap.get('id')!);
+    this.buscarCursoPorId();
   }
 
   buscarTodosCursosPorCursoId(id: string) {
@@ -28,17 +39,23 @@ export class DisciplinaListComponent implements OnInit {
     })
   }
 
-  excluirCurso(id: string) {
-    this.router.navigate([`curso/excluir/${id}`]);
+  buscarCursoPorId(){
+    this.cursoService.buscarCursoPorId(this.route.snapshot.paramMap.get('id')!).subscribe(resposta => {
+      this.curso.id = resposta.id;
+      this.curso.nome = resposta.nome;
+    });
   }
 
-  editarCurso(id: string) {
-    this.router.navigate([`curso/editar/${id}`]);
+  excluirDisciplina(id: string) {
+    this.router.navigate([`disciplina/excluir/${id}`]);
   }
 
-  novoCurso() {
-    this.router.navigate(['curso/inserir']);
+  editarDisciplina(id: string) {
+    this.router.navigate([`disciplina/editar/${id}`]);
   }
 
+  novaDisciplina() {
+    this.router.navigate([`disciplina/inserir/${this.curso.id}`]);
+  }
 
 }

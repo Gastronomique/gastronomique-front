@@ -19,6 +19,9 @@ import { CursoListComponent } from './views/curso/curso-list/curso-list.componen
 import { CursoDeleteComponent } from './views/curso/curso-delete/curso-delete.component';
 import { CursoEditComponent } from './views/curso/curso-edit/curso-edit.component';
 import { DisciplinaListComponent } from './views/disciplina/disciplina-list/disciplina-list.component';
+import { DisciplinaDeleteComponent } from './views/disciplina/disciplina-delete/disciplina-delete.component';
+import { DisciplinaCreateComponent } from './views/disciplina/disciplina-create/disciplina-create.component';
+import { DisciplinaEditComponent } from './views/disciplina/disciplina-edit/disciplina-edit.component';
 
 const routes: Routes = [
   {
@@ -90,8 +93,20 @@ const routes: Routes = [
     component: CursoEditComponent
   },
   {
-    path: 'disciplina/curso/:id/:nomeCurso',
+    path: 'disciplina/curso/:id',
     component: DisciplinaListComponent
+  },
+  {
+    path: 'disciplina/inserir/:id',
+    component: DisciplinaCreateComponent
+  },
+  {
+    path: 'disciplina/excluir/:id',
+    component: DisciplinaDeleteComponent
+  },
+  {
+    path: 'disciplina/editar/:id',
+    component: DisciplinaEditComponent
   },
   {
     path: '',

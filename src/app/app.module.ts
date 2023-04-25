@@ -38,6 +38,10 @@ import { DisciplinaCreateComponent } from './views/disciplina/disciplina-create/
 import { DisciplinaDeleteComponent } from './views/disciplina/disciplina-delete/disciplina-delete.component';
 import { DisciplinaEditComponent } from './views/disciplina/disciplina-edit/disciplina-edit.component';
 import { DisciplinaListComponent } from './views/disciplina/disciplina-list/disciplina-list.component';
+import { AulaCreateComponent } from './views/aula/aula-create/aula-create.component';
+import { AulaDeleteComponent } from './views/aula/aula-delete/aula-delete.component';
+import { AulaEditComponent } from './views/aula/aula-edit/aula-edit.component';
+import { AulaListComponent } from './views/aula/aula-list/aula-list.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,10 @@ import { DisciplinaListComponent } from './views/disciplina/disciplina-list/disc
     DisciplinaDeleteComponent,
     DisciplinaEditComponent,
     DisciplinaListComponent,
+    AulaCreateComponent,
+    AulaDeleteComponent,
+    AulaEditComponent,
+    AulaListComponent,
   ],
   imports: [
     BrowserModule,

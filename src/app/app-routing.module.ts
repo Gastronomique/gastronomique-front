@@ -22,6 +22,8 @@ import { DisciplinaListComponent } from './views/disciplina/disciplina-list/disc
 import { DisciplinaDeleteComponent } from './views/disciplina/disciplina-delete/disciplina-delete.component';
 import { DisciplinaCreateComponent } from './views/disciplina/disciplina-create/disciplina-create.component';
 import { DisciplinaEditComponent } from './views/disciplina/disciplina-edit/disciplina-edit.component';
+import { AulaCreateComponent } from './views/aula/aula-create/aula-create.component';
+import { AulaListComponent } from './views/aula/aula-list/aula-list.component';
 
 const routes: Routes = [
   {
@@ -107,6 +109,14 @@ const routes: Routes = [
   {
     path: 'disciplina/editar/:id',
     component: DisciplinaEditComponent
+  },
+  {
+    path: 'aula/inserir',
+    component: AulaCreateComponent
+  },
+  {
+    path: 'aula/listagem',
+    component: AulaListComponent
   },
   {
     path: '',

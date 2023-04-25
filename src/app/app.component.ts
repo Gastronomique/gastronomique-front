@@ -80,4 +80,12 @@ export class AppComponent {
     this.router.navigate(['curso/listagem']);
   }
 
+  navegarCadastroAula():void {
+    this.router.navigate(['aula/inserir']);
+  }
+
+  navegarListagemAulas():void {
+    this.router.navigate(['aula/listagem']);
+  }
+
 }

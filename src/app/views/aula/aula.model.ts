@@ -8,7 +8,6 @@ export class Aula {
     usuario!: Usuario;
     disciplina!: Disciplina;
     laboratorio!: Laboratorio;
-    dataUtilizacao!: Date;
+    dataUtilizacao!: String;
     valor!: Number;
   }
-  

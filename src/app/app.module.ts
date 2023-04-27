@@ -44,6 +44,8 @@ import { AulaCreateComponent } from './views/aula/aula-create/aula-create.compon
 import { AulaDeleteComponent } from './views/aula/aula-delete/aula-delete.component';
 import { AulaEditComponent } from './views/aula/aula-edit/aula-edit.component';
 import { AulaListComponent } from './views/aula/aula-list/aula-list.component';
+import { ItemCreateComponent } from './views/item/item-create/item-create.component';
+import { ItemListComponent } from './views/item/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { AulaListComponent } from './views/aula/aula-list/aula-list.component';
     AulaDeleteComponent,
     AulaEditComponent,
     AulaListComponent,
+    ItemCreateComponent,
+    ItemListComponent,
   ],
   imports: [
     BrowserModule,

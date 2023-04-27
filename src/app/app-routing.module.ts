@@ -26,6 +26,7 @@ import { AulaCreateComponent } from './views/aula/aula-create/aula-create.compon
 import { AulaListComponent } from './views/aula/aula-list/aula-list.component';
 import { AulaDeleteComponent } from './views/aula/aula-delete/aula-delete.component';
 import { AulaEditComponent } from './views/aula/aula-edit/aula-edit.component';
+import { ItemListComponent } from './views/item/item-list/item-list.component';
 
 const routes: Routes = [
   {
@@ -127,6 +128,10 @@ const routes: Routes = [
   {
     path: 'aula/editar/:id',
     component: AulaEditComponent
+  },
+  {
+    path: 'aula/itens/:id',
+    component: ItemListComponent
   },
   {
     path: '',

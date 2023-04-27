@@ -38,4 +38,8 @@ export class AulaListComponent implements OnInit {
     this.router.navigate(['aula/inserir']);
   }
 
+  listarItensAula(idAula: String) {
+    this.router.navigate([`aula/itens/${idAula}`]);
+  }
+
 }

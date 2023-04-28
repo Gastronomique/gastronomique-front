@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AulaListComponent implements OnInit {
 
   aulas: Aula[] = [];
-  displayedColumns: string[] = ['id', 'descricao', 'nomeUsuario', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'acoes'];
+  displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'acoes'];
 
   constructor(private service: AulaService, private router: Router) { }
 

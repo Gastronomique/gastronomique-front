@@ -22,3 +22,8 @@
 #btn-nova-aula {
   margin-bottom: 5px;
 }
+
+td button {
+  width: 30%;
+  display: inline;
+}

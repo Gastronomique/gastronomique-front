@@ -11,10 +11,10 @@
   <div class="mat-elevation-z8 content-table">
       <table class="table" mat-table [dataSource]="aulas">
           <!-- Position Column -->
-          <ng-container matColumnDef="id">
+          <!-- <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>Id</th>
             <td mat-cell *matCellDef="let row"> {{ row.id }} </td>
-          </ng-container>
+          </ng-container> -->
 
           <ng-container matColumnDef="descricao">
             <th mat-header-cell *matHeaderCellDef> Descrição </th>
@@ -49,13 +49,13 @@
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let row">
-              <button (click)="editarAula(row.id)" mat-stroked-button color="primary">
+              <button (click)="editarAula(row.id)" mat-button color="primary">
                 <i class="bi bi-pencil-square"></i>editar
               </button>
-              <button (click)="listarItensAula(row.id)" mat-stroked-button color="warn">
-                <i class="bi bi-trash3"></i>Listar itens
+              <button (click)="listarItensAula(row.id)" mat-button color="accent">
+                <i class="bi bi-box2-heart"></i> itens
               </button>
-              <button (click)="excluirAula(row.id)" mat-stroked-button color="warn">
+              <button (click)="excluirAula(row.id)" mat-button color="warn">
                 <i class="bi bi-trash3"></i>excluir
               </button>
             </td>

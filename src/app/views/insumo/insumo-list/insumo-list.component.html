@@ -4,12 +4,23 @@
       <h1>Listagem de insumos</h1>
   </div>
 
-  <button (click)="novoInsumo()" mat-stroked-button color="primary" id="btn-novo-insumo">
-    <i class="bi bi-plus-lg"></i> Novo Insumo
-  </button>
+  <div class="search">
+    <button (click)="novoInsumo()" mat-stroked-button color="primary" id="btn-novo-insumo">
+      <i class="bi bi-plus-lg"></i> Novo Insumo
+    </button>
+    <mat-form-field>
+      <input matInput
+       placeholder="Informe o nome do insumo para pesquisar..."
+       [(ngModel)]="termoDePesquisa"
+      >
+    </mat-form-field>
+    <mat-icon matPrefix>
+      <i class="bi bi-search"></i>
+    </mat-icon>
+  </div>
 
   <div class="mat-elevation-z8 content-table">
-      <table class="table" mat-table [dataSource]="insumos">
+      <table class="table" mat-table [dataSource]="filtroInsumos">
           <!-- Position Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>Id</th>

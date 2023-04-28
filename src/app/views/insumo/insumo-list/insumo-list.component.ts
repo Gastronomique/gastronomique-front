@@ -13,6 +13,8 @@ export class InsumoListComponent implements OnInit {
   insumos: Insumo[] = [];
   displayedColumns: string[] = ['id', 'denominacao', 'unidadeDeMedida', 'descricao', 'tipoInsumo', 'acoes'];
 
+  termoDePesquisa: String = '';
+
   constructor(private service: InsumoService, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,4 +40,9 @@ export class InsumoListComponent implements OnInit {
     this.router.navigate(['insumo/inserir']);
   }
 
+  get filtroInsumos() {
+    return this.insumos.filter((insumo) =>
+      insumo.denominacao.toLowerCase().includes(this.termoDePesquisa.toLowerCase())
+    );
+  }
 }

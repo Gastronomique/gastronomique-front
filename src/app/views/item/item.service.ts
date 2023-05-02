@@ -22,10 +22,10 @@ export class ItemService {
   //   return this.http.get<Curso>(url);
   // }
 
-  // inserirCurso(curso: Curso): Observable<Curso> {
-  //   const url = `${this.baseUrl}`;
-  //   return this.http.post<Curso>(url, curso);
-  // }
+  inserirItemAula(itemAula: Item): Observable<Item> {
+     const url = `${this.baseUrl}`;
+     return this.http.post<Item>(url, itemAula);
+  }
 
   // editarCurso(curso: Curso): Observable<void> {
   //   const url = `${this.baseUrl}/${curso.id}`;

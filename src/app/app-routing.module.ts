@@ -1,3 +1,4 @@
+import { ItemCreateComponent } from './views/item/item-create/item-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './security/home/home.component';
@@ -132,6 +133,10 @@ const routes: Routes = [
   {
     path: 'aula/itens/:id',
     component: ItemListComponent
+  },
+  {
+    path: 'aula/itens/inserir/:id',
+    component: ItemCreateComponent
   },
   {
     path: '',

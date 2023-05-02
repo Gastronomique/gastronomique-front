@@ -11,10 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ItemListComponent implements OnInit {
   itens: Item[] = [];
   displayedColumns: string[] = ['insumo', 'quantidade', 'unidade', 'observacao'];
+  idAula!: string;
 
   constructor(private service: ItemService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.idAula = this.route.snapshot.paramMap.get('id')!;
     this.buscarItensAula(this.route.snapshot.paramMap.get('id')!);
   }
 
@@ -39,4 +41,8 @@ export class ItemListComponent implements OnInit {
   listarDisciplinasPorCursoId(id: string) {
     this.router.navigate([`disciplina/curso/${id}`]);
   }*/
+
+  navegarParaInsercaoDeItens():void {
+    this.router.navigate([`aula/itens/inserir/${this.idAula}`]);
+  }
 }

@@ -17,25 +17,15 @@ export class ItemService {
     return this.http.get<Item[]>(url);
   }
 
-  // buscarCursoPorId(id: String): Observable<Curso> {
-  //   const url = `${this.baseUrl}/${id}`;
-  //   return this.http.get<Curso>(url);
-  // }
-
   inserirItemAula(itemAula: Item): Observable<Item> {
      const url = `${this.baseUrl}`;
      return this.http.post<Item>(url, itemAula);
   }
 
-  // editarCurso(curso: Curso): Observable<void> {
-  //   const url = `${this.baseUrl}/${curso.id}`;
-  //   return this.http.put<void>(url, curso);
-  // }
-
-  // excluirCurso(id: String): Observable<void> {
-  //   const url = `${this.baseUrl}/${id}`;
-  //   return this.http.delete<void>(url);
-  // }
+  excluirItemAula(idItemAula: String): Observable<void> {
+     const url = `${this.baseUrl}/${idItemAula}`;
+     return this.http.delete<void>(url);
+  }
 
   mensagem(str: String): void {
     this._snack.open(`${str}`, 'OK', {

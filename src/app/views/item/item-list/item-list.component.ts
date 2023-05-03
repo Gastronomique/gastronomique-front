@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../item.model';
 import { ItemService } from '../item.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-item-list',
@@ -10,10 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ItemListComponent implements OnInit {
   itens: Item[] = [];
-  displayedColumns: string[] = ['insumo', 'quantidade', 'unidade', 'observacao'];
+  displayedColumns: string[] = ['insumo', 'quantidade', 'unidade', 'observacao', 'acoes'];
   idAula!: string;
 
-  constructor(private service: ItemService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private service: ItemService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.idAula = this.route.snapshot.paramMap.get('id')!;
@@ -25,24 +31,31 @@ export class ItemListComponent implements OnInit {
       this.itens = json;
     })
   }
-/**
-  excluirCurso(id: string) {
-    this.router.navigate([`curso/excluir/${id}`]);
+
+  excluirItemAulaDialog(idItemAula: string) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        message: 'Tem certeza que deseja excluir este item de aula?',
+        buttonText: {
+          ok: 'Sim',
+          cancel: 'Cancelar'
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.service.excluirItemAula(idItemAula).subscribe((resposta) => {
+          window.location.reload();
+        });
+      }
+    });
   }
 
-  editarCurso(id: string) {
-    this.router.navigate([`curso/editar/${id}`]);
-  }
-
-  novoCurso() {
-    this.router.navigate(['curso/inserir']);
-  }
-
-  listarDisciplinasPorCursoId(id: string) {
-    this.router.navigate([`disciplina/curso/${id}`]);
-  }*/
-
-  navegarParaInsercaoDeItens():void {
+  navegarParaInsercaoDeItens(): void {
     this.router.navigate([`aula/itens/inserir/${this.idAula}`]);
+  }
+
+  navegarParaListagemDeAulas(): void {
+    this.router.navigate([`aula/listagem`]);
   }
 }

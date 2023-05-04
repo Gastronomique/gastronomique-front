@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Aula } from '../aula.model';
 import { AulaService } from '../aula.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/security/_services/user.service';
+import { StorageService } from 'src/app/security/_services/storage.service';
 
 @Component({
   selector: 'app-aula-list',
@@ -11,19 +13,29 @@ import { Router } from '@angular/router';
 export class AulaListComponent implements OnInit {
 
   aulas: Aula[] = [];
+  aulasPorUsuario: Aula[] = [];
   displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'acoes'];
 
-  constructor(private service: AulaService, private router: Router) { }
+  idUsuario!: String;
+
+  constructor(private service: AulaService, private router: Router, private usuarioService: StorageService) { }
 
   ngOnInit(): void {
+    this.idUsuario! = this.usuarioService.getUser().id;
+    this.buscarAulasPorUsuario(this.idUsuario);
     this.buscarTodasAulas();
   }
 
   buscarTodasAulas() {
     this.service.buscarTodasAulas().subscribe(resposta => {
       this.aulas = resposta;
-      console.log(resposta);
     })
+  }
+
+  buscarAulasPorUsuario(idUsuario: String) {
+    this.service.buscarAulasPorUsuario(idUsuario).subscribe(resposta => {
+      this.aulasPorUsuario = resposta;
+    });
   }
 
   excluirAula(id: string) {

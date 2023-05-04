@@ -28,16 +28,14 @@
             <button mat-menu-item (click)="navegarCadastroLaboratorio()">Cadastrar</button>
         </mat-menu>
 
+      </li>
+
+      <li class="nav-item" *ngIf="showProfessorBoard or showAdminBoard">
         <button id="btn-menu-aulas" mat-button [matMenuTriggerFor]="menuAulas">Aulas</button>
           <mat-menu #menuAulas="matMenu">
             <button mat-menu-item (click)="navegarListagemAulas()">Listar</button>
             <button mat-menu-item (click)="navegarCadastroAula()">Cadastrar</button>
         </mat-menu>
-
-      </li>
-
-      <li class="nav-item" *ngIf="showProfessorBoard">
-
       </li>
     </ul>
 

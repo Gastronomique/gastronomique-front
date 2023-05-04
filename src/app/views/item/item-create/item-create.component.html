@@ -7,7 +7,7 @@
         <mat-label>Insumo: </mat-label>
         <mat-select [(ngModel)]="itemAula.insumo.id"  [formControl]="insumoAula">
           <mat-option *ngFor="let insumo of insumos" [value]="insumo.id">
-              {{ insumo.denominacao }}
+              {{ insumo.denominacao }} ({{ insumo.unidadeDeMedida }})
             </mat-option>
         </mat-select>
         <mat-error *ngIf="insumoAula.invalid">

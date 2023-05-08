@@ -88,4 +88,12 @@ export class AppComponent {
     this.router.navigate(['aula/listagem']);
   }
 
+  navegarCadastroPregao():void {
+    this.router.navigate(['pregao/inserir']);
+  }
+
+  navegarListagemPregoes():void {
+    this.router.navigate(['pregao/listagem']);
+  }
+
 }

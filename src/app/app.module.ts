@@ -47,6 +47,10 @@ import { AulaEditComponent } from './views/aula/aula-edit/aula-edit.component';
 import { AulaListComponent } from './views/aula/aula-list/aula-list.component';
 import { ItemCreateComponent } from './views/item/item-create/item-create.component';
 import { ItemListComponent } from './views/item/item-list/item-list.component';
+import { PregaoCreateComponent } from './views/pregao/pregao-create/pregao-create.component';
+import { PregaoListComponent } from './views/pregao/pregao-list/pregao-list.component';
+import { PregaoEditComponent } from './views/pregao/pregao-edit/pregao-edit.component';
+import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delete.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +82,10 @@ import { ItemListComponent } from './views/item/item-list/item-list.component';
     AulaListComponent,
     ItemCreateComponent,
     ItemListComponent,
+    PregaoCreateComponent,
+    PregaoListComponent,
+    PregaoEditComponent,
+    PregaoDeleteComponent,
   ],
   imports: [
     BrowserModule,

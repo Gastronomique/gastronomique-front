@@ -10,6 +10,12 @@
           <button mat-menu-item>Requisições</button>
         </mat-menu>
 
+        <button id="btn-menu-pregoes" mat-button [matMenuTriggerFor]="menuPregoes">Pregões</button>
+          <mat-menu #menuPregoes="matMenu">
+            <button mat-menu-item (click)="navegarListagemPregoes()">Listar</button>
+            <button mat-menu-item (click)="navegarCadastroPregao()">Cadastrar</button>
+        </mat-menu>
+
         <button id="btn-menu-insumos" mat-button [matMenuTriggerFor]="menuInsumos">Insumos</button>
           <mat-menu #menuInsumos="matMenu">
             <button mat-menu-item (click)="navegarListagemInsumos()">Listar</button>

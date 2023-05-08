@@ -28,6 +28,10 @@ import { AulaListComponent } from './views/aula/aula-list/aula-list.component';
 import { AulaDeleteComponent } from './views/aula/aula-delete/aula-delete.component';
 import { AulaEditComponent } from './views/aula/aula-edit/aula-edit.component';
 import { ItemListComponent } from './views/item/item-list/item-list.component';
+import { PregaoCreateComponent } from './views/pregao/pregao-create/pregao-create.component';
+import { PregaoListComponent } from './views/pregao/pregao-list/pregao-list.component';
+import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delete.component';
+import { PregaoEditComponent } from './views/pregao/pregao-edit/pregao-edit.component';
 
 const routes: Routes = [
   {
@@ -137,6 +141,22 @@ const routes: Routes = [
   {
     path: 'aula/itens/inserir/:id',
     component: ItemCreateComponent
+  },
+  {
+    path: 'pregao/inserir',
+    component: PregaoCreateComponent
+  },
+  {
+    path: 'pregao/listagem',
+    component: PregaoListComponent
+  },
+  {
+    path: 'pregao/excluir/:id',
+    component: PregaoDeleteComponent
+  },
+  {
+    path: 'pregao/editar/:id',
+    component: PregaoEditComponent
   },
   {
     path: '',

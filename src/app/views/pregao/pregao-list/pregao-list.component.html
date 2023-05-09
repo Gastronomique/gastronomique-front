@@ -37,7 +37,7 @@
               <button (click)="editarPregao(row.id)" mat-button color="primary">
                 <i class="bi bi-pencil-square"></i>editar
               </button>
-              <button mat-button color="accent">
+              <button (click)="listarInsumosDoPregao(row.id)" mat-button color="accent">
                 <i class="bi bi-box2-heart"></i> insumos
               </button>
               <button (click)="excluirPregao(row.id)" mat-button color="warn">

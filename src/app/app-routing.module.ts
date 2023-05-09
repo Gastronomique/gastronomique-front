@@ -32,6 +32,8 @@ import { PregaoCreateComponent } from './views/pregao/pregao-create/pregao-creat
 import { PregaoListComponent } from './views/pregao/pregao-list/pregao-list.component';
 import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delete.component';
 import { PregaoEditComponent } from './views/pregao/pregao-edit/pregao-edit.component';
+import { InsumoPregaoCreateComponent } from './views/insumo-pregao/insumo-pregao-create/insumo-pregao-create.component';
+import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-list/insumo-pregao-list.component';
 
 const routes: Routes = [
   {
@@ -157,6 +159,14 @@ const routes: Routes = [
   {
     path: 'pregao/editar/:id',
     component: PregaoEditComponent
+  },
+  {
+    path: 'pregao/insumos/inserir/:id',
+    component: InsumoPregaoCreateComponent
+  },
+  {
+    path: 'pregao/insumos/:id',
+    component: InsumoPregaoListComponent
   },
   {
     path: '',

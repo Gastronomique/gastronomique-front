@@ -36,4 +36,8 @@ export class PregaoListComponent implements OnInit {
   novoPregao() {
     this.router.navigate(['pregao/inserir']);
   }
+
+  listarInsumosDoPregao(idPregao: String) {
+    this.router.navigate([`pregao/insumos/${idPregao}`]);
+  }
 }

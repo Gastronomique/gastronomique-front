@@ -51,6 +51,8 @@ import { PregaoCreateComponent } from './views/pregao/pregao-create/pregao-creat
 import { PregaoListComponent } from './views/pregao/pregao-list/pregao-list.component';
 import { PregaoEditComponent } from './views/pregao/pregao-edit/pregao-edit.component';
 import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delete.component';
+import { InsumoPregaoCreateComponent } from './views/insumo-pregao/insumo-pregao-create/insumo-pregao-create.component';
+import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-list/insumo-pregao-list.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delet
     PregaoListComponent,
     PregaoEditComponent,
     PregaoDeleteComponent,
+    InsumoPregaoCreateComponent,
+    InsumoPregaoListComponent,
   ],
   imports: [
     BrowserModule,

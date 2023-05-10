@@ -38,7 +38,7 @@
 
           <ng-container matColumnDef="dataUtilizacao">
             <th mat-header-cell *matHeaderCellDef> Data de utilização </th>
-            <td mat-cell *matCellDef="let row"> {{ row.dataUtilizacao }} </td>
+            <td mat-cell *matCellDef="let row"> {{ formatarData(row.dataUtilizacao) }} </td>
           </ng-container>
 
           <ng-container matColumnDef="valor">

@@ -36,7 +36,7 @@
 
       </li>
 
-      <li class="nav-item" *ngIf="showProfessorBoard or showAdminBoard">
+      <li class="nav-item" *ngIf="showProfessorBoard || showAdminBoard">
         <button id="btn-menu-aulas" mat-button [matMenuTriggerFor]="menuAulas">Aulas</button>
           <mat-menu #menuAulas="matMenu">
             <button mat-menu-item (click)="navegarListagemAulas()">Listar</button>

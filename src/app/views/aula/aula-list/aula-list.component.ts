@@ -54,4 +54,10 @@ export class AulaListComponent implements OnInit {
     this.router.navigate([`aula/itens/${idAula}`]);
   }
 
+  formatarData(data: any): any {
+    const partes = data.split('-');
+    const dataInvertida = partes.reverse().join('/');
+    return dataInvertida;
+  }
+
 }

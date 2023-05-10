@@ -57,7 +57,9 @@
     </form>
 
     <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
+      Seu usuário possui permissões de:
+      <br> {{ roles[0].slice(5) }}
+      <br> {{ roles[1].slice(5) }}
     </div>
   </div>
 </div>

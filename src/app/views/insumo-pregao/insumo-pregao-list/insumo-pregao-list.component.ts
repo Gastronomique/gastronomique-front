@@ -62,6 +62,12 @@ export class InsumoPregaoListComponent implements OnInit {
     });
   }
 
+  formatarData(data: any): any {
+    const partes = data.split('-');
+    const dataInvertida = partes.reverse().join('/');
+    return dataInvertida;
+  }
+
   navegarParaInsercaoDeInsumos(): void {
     this.router.navigate([`pregao/insumos/inserir/${this.idPregao}`]);
   }

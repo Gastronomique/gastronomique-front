@@ -2,7 +2,11 @@
 
     <div class="title">
         <h1>Listagem de insumos do pregão: {{ pregao.nome }}</h1>
-        <span><em>De {{ pregao.dataInicio }} até {{ pregao.dataFinal }}</em></span>
+        <span>
+          <em>De {{ formatarData(pregao.dataInicio) }}
+             Até {{ formatarData(pregao.dataFinal) }}
+          </em>
+        </span>
     </div>
 
     <button (click)="navegarParaInsercaoDeInsumos()" mat-stroked-button color="primary" id="btn-novo-curso">

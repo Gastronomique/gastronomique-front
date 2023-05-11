@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +15,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +55,8 @@ import { PregaoEditComponent } from './views/pregao/pregao-edit/pregao-edit.comp
 import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delete.component';
 import { InsumoPregaoCreateComponent } from './views/insumo-pregao/insumo-pregao-create/insumo-pregao-create.component';
 import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-list/insumo-pregao-list.component';
+
+registerLocaleData(localePt, "pt");
 
 @NgModule({
   declarations: [
@@ -112,7 +116,10 @@ import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-l
     MatNativeDateModule,
     MatDialogModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [
+    httpInterceptorProviders, 
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

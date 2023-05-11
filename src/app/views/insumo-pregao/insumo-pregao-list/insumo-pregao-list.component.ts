@@ -13,10 +13,9 @@ import { Pregao } from '../../pregao/pregao.model';
   styleUrls: ['./insumo-pregao-list.component.css']
 })
 export class InsumoPregaoListComponent implements OnInit {
-
   insumosPregao: InsumoPregao[] = [];
   pregao!: Pregao;
-  displayedColumns: string[] = ['insumo', 'preco', 'quantidade', 'acoes'];
+  displayedColumns: string[] = ['insumo', 'unidadeDeMedida', 'preco', 'quantidade', 'acoes'];
   idPregao!: string;
 
   constructor(

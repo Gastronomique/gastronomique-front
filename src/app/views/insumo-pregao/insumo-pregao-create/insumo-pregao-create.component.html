@@ -22,6 +22,7 @@
           <input
             matInput
             type="number"
+            mask="0.00"
             [(ngModel)]="insumoPregao.preco"
             [formControl]="preco">
           <mat-error *ngIf="preco.invalid">
@@ -35,7 +36,7 @@
           <mat-label>Quantidade: </mat-label>
           <input
             matInput
-            type="text"
+            type="number"
             [(ngModel)]="insumoPregao.quantidade"
             [formControl]="quantidade">
           <mat-error *ngIf="quantidade.invalid">

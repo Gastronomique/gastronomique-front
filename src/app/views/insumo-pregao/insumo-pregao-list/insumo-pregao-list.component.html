@@ -25,14 +25,19 @@
               <td mat-cell *matCellDef="let row"> {{ row.insumo.denominacao }} </td>
             </ng-container>
 
+            <ng-container matColumnDef="unidadeDeMedida">
+              <th mat-header-cell *matHeaderCellDef>UN</th>
+              <td mat-cell *matCellDef="let row"> {{ row.insumo.unidadeDeMedida }} </td>
+            </ng-container>
+
             <ng-container matColumnDef="preco">
-                <th mat-header-cell *matHeaderCellDef>Preço</th>
-                <td mat-cell *matCellDef="let row"> {{ row.preco }} </td>
+                <th mat-header-cell *matHeaderCellDef>Preço Unitário</th>
+                <td mat-cell *matCellDef="let row"> {{ row.preco | currency }} </td>
               </ng-container>
 
             <ng-container matColumnDef="quantidade">
                 <th mat-header-cell *matHeaderCellDef>Quantidade</th>
-                <td mat-cell *matCellDef="let row"> {{ row.quantidade }} </td>
+                <td mat-cell *matCellDef="let row"> {{ row.quantidade | number: '.3' }} </td>
               </ng-container>
 
             <ng-container matColumnDef="acoes">

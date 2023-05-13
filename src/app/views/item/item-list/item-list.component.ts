@@ -12,7 +12,7 @@ import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.comp
 })
 export class ItemListComponent implements OnInit {
   itens: Item[] = [];
-  displayedColumns: string[] = ['insumo', 'unidade', 'quantidade', 'observacao', 'acoes'];
+  displayedColumns: string[] = ['insumo', 'unidade', 'quantidade', 'valorUnitario', 'valorTotal', 'observacao', 'acoes'];
   idAula!: string;
 
   constructor(

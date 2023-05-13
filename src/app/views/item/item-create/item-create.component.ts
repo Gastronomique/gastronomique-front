@@ -22,7 +22,8 @@ export class ItemCreateComponent implements OnInit {
     insumo: new Insumo(),
     quantidade: 0,
     observacao: '',
-    valor: 0
+    valorUnitario: 0, 
+    valorTotal: 0
   };
 
   insumoAula = new FormControl(0, [Validators.required]);

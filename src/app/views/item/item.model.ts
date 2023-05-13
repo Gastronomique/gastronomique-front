@@ -7,5 +7,6 @@ export class Item {
     insumo!: Insumo;
     quantidade!: Number;
     observacao!: String;
-    valor!: Number;
+    valorUnitario!: Number;
+    valorTotal!: Number;
 }

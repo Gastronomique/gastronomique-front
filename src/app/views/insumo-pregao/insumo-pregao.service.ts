@@ -8,7 +8,7 @@ import { InsumoPregao } from './insumo-pregao.model';
   providedIn: 'root'
 })
 export class InsumoPregaoService {
-  
+
   baseUrl: String = "http://localhost:8080/pregao/insumos";
 
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
@@ -26,6 +26,11 @@ export class InsumoPregaoService {
   excluirInsumoDoPregao(idPregao: String): Observable<void> {
      const url = `${this.baseUrl}/${idPregao}`;
      return this.http.delete<void>(url);
+  }
+
+  listarUltimoPreco(idInsumo: String) {
+    const url = `${this.baseUrl}/ocorrencia/${idInsumo}`;
+    return this.http.get<InsumoPregao>(url);
   }
 
   mensagem(str: String): void {

@@ -4,6 +4,8 @@ import { ItemService } from '../item.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+import { AulaService } from '../../aula/aula.service';
+import { Aula } from '../../aula/aula.model';
 
 @Component({
   selector: 'app-item-list',
@@ -12,11 +14,13 @@ import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.comp
 })
 export class ItemListComponent implements OnInit {
   itens: Item[] = [];
+  aula!: Aula;
   displayedColumns: string[] = ['insumo', 'unidade', 'quantidade', 'valorUnitario', 'valorTotal', 'observacao', 'acoes'];
   idAula!: string;
 
   constructor(
     private service: ItemService,
+    private aulaService: AulaService,
     private router: Router,
     private route: ActivatedRoute,
     private dialog: MatDialog) { }
@@ -24,12 +28,19 @@ export class ItemListComponent implements OnInit {
   ngOnInit(): void {
     this.idAula = this.route.snapshot.paramMap.get('id')!;
     this.buscarItensAula(this.route.snapshot.paramMap.get('id')!);
+    this.buscarDadosDaAula(this.route.snapshot.paramMap.get('id')!);
   }
 
   buscarItensAula(idAula: String) {
     this.service.buscarItensAula(idAula).subscribe((json) => {
       this.itens = json;
     })
+  }
+
+  buscarDadosDaAula(idAula: String) {
+    this.aulaService.buscarAulaPorId(idAula).subscribe(resposta => {
+      this.aula = resposta;
+    });
   }
 
   excluirItemAulaDialog(idItemAula: string) {
@@ -49,6 +60,12 @@ export class ItemListComponent implements OnInit {
         });
       }
     });
+  }
+
+  formatarData(data: any): any {
+    const partes = data.split('-');
+    const dataInvertida = partes.reverse().join('/');
+    return dataInvertida;
   }
 
   navegarParaInsercaoDeItens(): void {

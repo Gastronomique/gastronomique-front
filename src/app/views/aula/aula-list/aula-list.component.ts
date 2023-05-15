@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Aula } from '../aula.model';
 import { AulaService } from '../aula.service';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/security/_services/user.service';
 import { StorageService } from 'src/app/security/_services/storage.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class AulaListComponent implements OnInit {
 
   aulas: Aula[] = [];
   aulasPorUsuario: Aula[] = [];
-  displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'acoes'];
+  displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomePregao', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'acoes'];
 
   idUsuario!: String;
 

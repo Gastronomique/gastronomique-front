@@ -13,6 +13,20 @@
 
     <div class="row">
       <mat-form-field appearance="fill">
+        <mat-label>Pregão: </mat-label>
+        <mat-select [(ngModel)]="aula.pregao.id"  [formControl]="pregao">
+          <mat-option *ngFor="let pregao of pregoes" [value]="pregao.id">
+              {{ pregao.nome }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="disciplina.invalid">
+          O preenchimento do campo 'Pregão' é obrigatório!
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="fill">
         <mat-label>Disciplina: </mat-label>
         <mat-select [(ngModel)]="aula.disciplina.id"  [formControl]="disciplina">
           <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.id">

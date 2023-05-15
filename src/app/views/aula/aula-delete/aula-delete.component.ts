@@ -5,6 +5,7 @@ import { Disciplina } from '../../disciplina/disciplina.model';
 import { Laboratorio } from '../../laboratorio/laboratorio.model';
 import { AulaService } from '../aula.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Pregao } from '../../pregao/pregao.model';
 
 @Component({
   selector: 'app-aula-delete',
@@ -15,6 +16,7 @@ export class AulaDeleteComponent implements OnInit {
 
   aula: Aula = {
     descricao: '',
+    pregao: new Pregao(),
     usuario: new Usuario(),
     disciplina: new Disciplina(),
     laboratorio: new Laboratorio(),
@@ -37,6 +39,7 @@ export class AulaDeleteComponent implements OnInit {
     this.service.buscarAulaPorId(this.aula.id!).subscribe((resposta => {
       this.aula.id = resposta.id;
       this.aula.descricao = resposta.descricao;
+      this.aula.pregao = resposta.pregao;
       this.aula.usuario = resposta.usuario;
       this.aula.disciplina = resposta.disciplina;
       this.aula.laboratorio = resposta.laboratorio;

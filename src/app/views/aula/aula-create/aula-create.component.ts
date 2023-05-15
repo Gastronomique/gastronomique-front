@@ -10,6 +10,8 @@ import { StorageService } from 'src/app/security/_services/storage.service';
 import { DisciplinaService } from '../../disciplina/disciplina.service';
 import { LaboratorioService } from '../../laboratorio/laboratorio.service';
 import { MatDatepickerInput } from '@angular/material/datepicker';
+import { PregaoService } from '../../pregao/pregao.service';
+import { Pregao } from '../../pregao/pregao.model';
 
 @Component({
   selector: 'app-aula-create',
@@ -20,6 +22,7 @@ export class AulaCreateComponent implements OnInit {
 
   aula: Aula = {
     descricao: '',
+    pregao: new Pregao(),
     usuario: new Usuario(),
     disciplina: new Disciplina(),
     laboratorio: new Laboratorio(),
@@ -27,10 +30,13 @@ export class AulaCreateComponent implements OnInit {
     valor: 0
   };
 
+  pregoes: Pregao[] = [];
+
   disciplinas: Disciplina[] = [];
 
   laboratorios: Laboratorio[] = [];
 
+  pregao = new FormControl(0, [Validators.required]);
   disciplina = new FormControl(0, [Validators.required]);
   laboratorio = new FormControl(0, [Validators.required]);
   dataUtilizacao = new FormControl('', [Validators.required]);
@@ -40,11 +46,13 @@ export class AulaCreateComponent implements OnInit {
     private router: Router,
     private usuarioService: StorageService,
     private disciplinaService: DisciplinaService,
-    private laboratorioService: LaboratorioService
+    private laboratorioService: LaboratorioService,
+    private pregaoService: PregaoService
   ) { }
 
   ngOnInit(): void {
     this.setUsuarioId();
+    this.buscarTodosPregoes();
     this.buscarTodasDisciplinas();
     this.buscarTodosLaboratorios();
   }
@@ -73,7 +81,13 @@ export class AulaCreateComponent implements OnInit {
   buscarTodasDisciplinas() {
     this.disciplinaService.buscarTodasDisciplinas().subscribe(resposta => {
       this.disciplinas = resposta;
-    })
+    });
+  }
+
+  buscarTodosPregoes() {
+    this.pregaoService.buscarTodosPregoes().subscribe(resposta => {
+      this.pregoes = resposta;
+    });
   }
 
   cancelar(): void { this.router.navigate(['aula/listagem']); }

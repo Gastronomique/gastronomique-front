@@ -10,6 +10,13 @@
 
     <div class="row">
       <mat-form-field appearance="fill">
+        <mat-label>Pregão</mat-label>
+        <input matInput [value]="aula.pregao.nome" [disabled]="true" />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="fill">
         <mat-label>Professor</mat-label>
         <input matInput [value]="aula.usuario.fullName" [disabled]="true" />
       </mat-form-field>

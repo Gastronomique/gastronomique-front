@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../item.service';
 import { InsumoService } from '../../insumo/insumo.service';
 import { FormControl, Validators } from '@angular/forms';
+import { InsumoPregao } from '../../insumo-pregao/insumo-pregao.model';
+import { InsumoPregaoService } from '../../insumo-pregao/insumo-pregao.service';
 
 @Component({
   selector: 'app-item-create',
@@ -13,6 +15,8 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./item-create.component.css']
 })
 export class ItemCreateComponent implements OnInit {
+
+  insumoPregao!: InsumoPregao;
 
   insumos!: Insumo[];
 
@@ -22,7 +26,7 @@ export class ItemCreateComponent implements OnInit {
     insumo: new Insumo(),
     quantidade: 0,
     observacao: '',
-    valorUnitario: 0, 
+    valorUnitario: 0,
     valorTotal: 0
   };
 
@@ -32,6 +36,7 @@ export class ItemCreateComponent implements OnInit {
   constructor(
     private service: ItemService,
     private insumoService: InsumoService,
+    private insumoPregaoService: InsumoPregaoService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -58,6 +63,14 @@ export class ItemCreateComponent implements OnInit {
     this.insumoService.buscarTodosInsumos().subscribe((resposta) => {
       this.insumos = resposta;
     })
+  }
+
+  setValorItem(idInsumo: String) {
+    this.insumoPregaoService.listarUltimoPreco(idInsumo).subscribe(resposta => {
+      this.insumoPregao = resposta;
+      this.itemAula.valorUnitario = resposta.preco;
+      this.itemAula.valorTotal = Number(this.itemAula.valorUnitario) * Number(this.itemAula.quantidade);
+    });
   }
 
   cancelar(): void { this.router.navigate([`aula/itens/${this.idAula}`]); }

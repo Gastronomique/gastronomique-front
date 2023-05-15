@@ -8,6 +8,8 @@ import { AulaService } from '../aula.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LaboratorioService } from '../../laboratorio/laboratorio.service';
 import { DisciplinaService } from '../../disciplina/disciplina.service';
+import { Pregao } from '../../pregao/pregao.model';
+import { PregaoService } from '../../pregao/pregao.service';
 
 @Component({
   selector: 'app-aula-edit',
@@ -16,11 +18,13 @@ import { DisciplinaService } from '../../disciplina/disciplina.service';
 })
 export class AulaEditComponent implements OnInit {
 
+  pregoes: Pregao[] = [];
   disciplinas: Disciplina[] = [];
   laboratorios: Laboratorio[] = [];
 
   aula: Aula = {
     descricao: '',
+    pregao: new Pregao(),
     usuario: new Usuario(),
     disciplina: new Disciplina(),
     laboratorio: new Laboratorio(),
@@ -28,12 +32,14 @@ export class AulaEditComponent implements OnInit {
     valor: 0
   };
 
+  pregao = new FormControl(0, [Validators.required]);
   disciplina = new FormControl(0, [Validators.required]);
   laboratorio = new FormControl(0, [Validators.required]);
   dataUtilizacao = new FormControl('', [Validators.required]);
 
   constructor(
     private service: AulaService,
+    private pregaoService: PregaoService,
     private laboratorioService: LaboratorioService,
     private disciplinaService: DisciplinaService,
     private router: Router,
@@ -43,6 +49,7 @@ export class AulaEditComponent implements OnInit {
   ngOnInit(): void {
     this.aula.id = this.route.snapshot.paramMap.get('id')!;
     this.buscarAulaPorId();
+    this.buscarTodosPregoes();
     this.buscarTodosLaboratorios();
     this.buscarTodasDisciplinas();
   }
@@ -69,6 +76,12 @@ export class AulaEditComponent implements OnInit {
     this.disciplinaService.buscarTodasDisciplinas().subscribe(resposta => {
       this.disciplinas = resposta;
     })
+  }
+
+  buscarTodosPregoes() {
+    this.pregaoService.buscarTodosPregoes().subscribe(resposta => {
+      this.pregoes = resposta;
+    });
   }
 
   editarAula(): void {

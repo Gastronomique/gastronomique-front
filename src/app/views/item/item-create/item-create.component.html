@@ -5,7 +5,8 @@
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Insumo: </mat-label>
-        <mat-select [(ngModel)]="itemAula.insumo.id"  [formControl]="insumoAula">
+        <mat-select (selectionChange)="setValorItem(itemAula.insumo.id!)"
+         [(ngModel)]="itemAula.insumo.id"  [formControl]="insumoAula">
           <mat-option *ngFor="let insumo of insumos" [value]="insumo.id">
               {{ insumo.denominacao }} ({{ insumo.unidadeDeMedida }}) ({{ insumo.tipoInsumo }})
             </mat-option>
@@ -41,7 +42,7 @@
           >
       </mat-form-field>
     </div>
-<!-- 
+<!--
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Valor R$: </mat-label>

@@ -1,7 +1,7 @@
 <div class="content">
 
     <div class="title">
-        <h1>Listagem de itens da aula</h1>
+        <h1>Listagem de itens da aula: {{ aula.descricao }}({{ formatarData(aula.dataUtilizacao) }})</h1>
     </div>
 
     <button (click)="navegarParaInsercaoDeItens()" mat-stroked-button color="primary" id="btn-novo-curso">

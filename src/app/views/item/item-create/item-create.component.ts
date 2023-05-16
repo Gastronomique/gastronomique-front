@@ -62,14 +62,14 @@ export class ItemCreateComponent implements OnInit {
   buscarTodosInsumos() {
     this.insumoService.buscarTodosInsumos().subscribe((resposta) => {
       this.insumos = resposta;
-    })
+    });
   }
 
   setValorItem(idInsumo: String) {
     this.insumoPregaoService.listarUltimoPreco(idInsumo).subscribe(resposta => {
       this.insumoPregao = resposta;
       this.itemAula.valorUnitario = resposta.preco;
-      this.itemAula.valorTotal = Number(this.itemAula.valorUnitario) * Number(this.itemAula.quantidade);
+      //this.itemAula.valorTotal = Number(this.itemAula.valorUnitario) * Number(this.itemAula.quantidade);
     });
   }
 

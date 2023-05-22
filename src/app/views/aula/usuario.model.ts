@@ -1,5 +1,9 @@
 export class Usuario {
     id?: String;
-    username!: String;
+    email!: String;
     fullName!: String;
+    isActive!: String;
+    password!: String;
+    username!: String;
+    roles!: [];
   }

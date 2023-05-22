@@ -8,6 +8,10 @@
     <i class="bi bi-plus-lg"></i> Nova Disciplina
   </button>
 
+  <button (click)="navegarParaListagemDeCursos()" mat-stroked-button color="accent" id="btn-voltar">
+    <i class="bi bi-arrow-90deg-left"></i> Voltar
+  </button>
+
   <div class="mat-elevation-z8 content-table">
       <table class="table" mat-table [dataSource]="disciplinas">
           <!-- Position Column -->

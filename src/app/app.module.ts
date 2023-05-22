@@ -55,6 +55,8 @@ import { PregaoEditComponent } from './views/pregao/pregao-edit/pregao-edit.comp
 import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delete.component';
 import { InsumoPregaoCreateComponent } from './views/insumo-pregao/insumo-pregao-create/insumo-pregao-create.component';
 import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-list/insumo-pregao-list.component';
+import { UserListComponent } from './views/admin/user-list/user-list.component';
+import { RequisicoesListComponent } from './views/admin/requisicoes-list/requisicoes-list.component';
 
 registerLocaleData(localePt, "pt");
 
@@ -94,6 +96,8 @@ registerLocaleData(localePt, "pt");
     PregaoDeleteComponent,
     InsumoPregaoCreateComponent,
     InsumoPregaoListComponent,
+    UserListComponent,
+    RequisicoesListComponent,
   ],
   imports: [
     BrowserModule,
@@ -117,7 +121,7 @@ registerLocaleData(localePt, "pt");
     MatDialogModule
   ],
   providers: [
-    httpInterceptorProviders, 
+    httpInterceptorProviders,
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }],
   bootstrap: [AppComponent]

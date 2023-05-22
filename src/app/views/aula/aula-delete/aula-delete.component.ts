@@ -6,6 +6,7 @@ import { Laboratorio } from '../../laboratorio/laboratorio.model';
 import { AulaService } from '../aula.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pregao } from '../../pregao/pregao.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-aula-delete',
@@ -27,7 +28,8 @@ export class AulaDeleteComponent implements OnInit {
   constructor(
     private service: AulaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -50,12 +52,14 @@ export class AulaDeleteComponent implements OnInit {
 
   excluirAula(): void {
     this.service.excluirAula(this.aula.id!).subscribe((resposta) => {
-      this.router.navigate(['aula/listagem']);
+      // this.router.navigate(['aula/listagem']);
+      this.location.back();
     });
   }
 
   cancelar(): void {
-    this.router.navigate(['aula/listagem']);
+    // this.router.navigate(['aula/listagem']);
+    this.location.back();
   }
 
 }

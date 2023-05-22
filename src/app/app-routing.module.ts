@@ -34,6 +34,8 @@ import { PregaoDeleteComponent } from './views/pregao/pregao-delete/pregao-delet
 import { PregaoEditComponent } from './views/pregao/pregao-edit/pregao-edit.component';
 import { InsumoPregaoCreateComponent } from './views/insumo-pregao/insumo-pregao-create/insumo-pregao-create.component';
 import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-list/insumo-pregao-list.component';
+import { UserListComponent } from './views/admin/user-list/user-list.component';
+import { RequisicoesListComponent } from './views/admin/requisicoes-list/requisicoes-list.component';
 
 const routes: Routes = [
   {
@@ -169,8 +171,16 @@ const routes: Routes = [
     component: InsumoPregaoListComponent
   },
   {
+    path: 'admin/listagem/usuarios',
+    component: UserListComponent
+  },
+  {
+    path: 'admin/listagem/requisicoes',
+    component: RequisicoesListComponent
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];

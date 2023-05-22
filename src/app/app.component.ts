@@ -96,4 +96,11 @@ export class AppComponent {
     this.router.navigate(['pregao/listagem']);
   }
 
+  navegarListagemUsuarios():void {
+    this.router.navigate(['admin/listagem/usuarios']);
+  }
+
+  navegarListagemRequisicoes():void {
+    this.router.navigate(['admin/listagem/requisicoes']);
+  }
 }

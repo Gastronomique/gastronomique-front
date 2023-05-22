@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { AulaService } from '../../aula/aula.service';
 import { Aula } from '../../aula/aula.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item-list',
@@ -23,7 +24,8 @@ export class ItemListComponent implements OnInit {
     private aulaService: AulaService,
     private router: Router,
     private route: ActivatedRoute,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.idAula = this.route.snapshot.paramMap.get('id')!;
@@ -73,6 +75,7 @@ export class ItemListComponent implements OnInit {
   }
 
   navegarParaListagemDeAulas(): void {
-    this.router.navigate([`aula/listagem`]);
+    // this.router.navigate([`aula/listagem`]);
+    this.location.back();
   }
 }

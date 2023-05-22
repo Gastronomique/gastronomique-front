@@ -10,6 +10,7 @@ import { LaboratorioService } from '../../laboratorio/laboratorio.service';
 import { DisciplinaService } from '../../disciplina/disciplina.service';
 import { Pregao } from '../../pregao/pregao.model';
 import { PregaoService } from '../../pregao/pregao.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-aula-edit',
@@ -43,7 +44,8 @@ export class AulaEditComponent implements OnInit {
     private laboratorioService: LaboratorioService,
     private disciplinaService: DisciplinaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -63,6 +65,7 @@ export class AulaEditComponent implements OnInit {
       this.aula.laboratorio = resposta.laboratorio;
       this.aula.dataUtilizacao = resposta.dataUtilizacao;
       this.aula.valor = resposta.valor;
+      this.aula.pregao = resposta.pregao;
     }));
   }
 
@@ -86,11 +89,13 @@ export class AulaEditComponent implements OnInit {
 
   editarAula(): void {
     this.service.editarAula(this.aula).subscribe((resposta) => {
-      this.router.navigate(['aula/listagem']);
+      // this.router.navigate(['aula/listagem']);
+      this.location.back();
     });
   }
 
   cancelar(): void {
-    this.router.navigate(['aula/listagem']);
+  //   this.router.navigate(['aula/listagem']);
+    this.location.back();
   }
 }

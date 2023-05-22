@@ -58,4 +58,8 @@ export class DisciplinaListComponent implements OnInit {
     this.router.navigate([`disciplina/inserir/${this.curso.id}`]);
   }
 
+  navegarParaListagemDeCursos() {
+    this.router.navigate([`curso/listagem`]);
+  }
+
 }

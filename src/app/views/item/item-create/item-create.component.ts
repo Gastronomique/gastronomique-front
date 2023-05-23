@@ -8,6 +8,7 @@ import { InsumoService } from '../../insumo/insumo.service';
 import { FormControl, Validators } from '@angular/forms';
 import { InsumoPregao } from '../../insumo-pregao/insumo-pregao.model';
 import { InsumoPregaoService } from '../../insumo-pregao/insumo-pregao.service';
+import { AulaService } from '../../aula/aula.service';
 
 @Component({
   selector: 'app-item-create',
@@ -30,6 +31,8 @@ export class ItemCreateComponent implements OnInit {
     valorTotal: 0
   };
 
+  aula = new Aula();
+
   insumoAula = new FormControl(0, [Validators.required]);
   quantidade = new FormControl(0, [Validators.required]);
 
@@ -38,14 +41,15 @@ export class ItemCreateComponent implements OnInit {
     private insumoService: InsumoService,
     private insumoPregaoService: InsumoPregaoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private aulaService: AulaService
   ) { }
 
   idAula = this.route.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
     this.itemAula.aula.id = this.idAula!;
-    this.buscarTodosInsumos();
+    this.buscarAula();
   }
 
   inserirItemAula(): void {
@@ -59,9 +63,24 @@ export class ItemCreateComponent implements OnInit {
     );
   }
 
-  buscarTodosInsumos() {
-    this.insumoService.buscarTodosInsumos().subscribe((resposta) => {
+  buscarAula() {
+    this.aulaService.buscarAulaPorId(this.idAula!).subscribe(resposta => {
+      this.aula = resposta;
+      this.buscarInsumosPorPregao();
+    });
+  }
+
+  buscarInsumosPorPregao() {
+    this.insumoService.buscarInsumosPorPregao(this.aula.pregao.id).subscribe((resposta) => {
       this.insumos = resposta;
+      this.buscarInsumosTipoProducao();
+    });
+  }
+
+  buscarInsumosTipoProducao() {
+    this.insumoService.buscarInsumosPorTipo("PRODUCAO").subscribe(resposta => {
+      const insumosProducao = resposta;
+      this.insumos = this.insumos.concat(insumosProducao);
     });
   }
 

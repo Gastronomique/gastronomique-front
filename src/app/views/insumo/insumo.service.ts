@@ -18,6 +18,16 @@ export class InsumoService {
     return this.http.get<Insumo[]>(url);
   }
 
+  buscarInsumosPorPregao(idPregao: String): Observable<Insumo[]> {
+    const url = `${this.baseUrl}/pregao/${idPregao}`;
+    return this.http.get<Insumo[]>(url);
+  }
+
+  buscarInsumosPorTipo(tipo: String): Observable<Insumo[]> {
+    const url = `${this.baseUrl}/tipo/${tipo}`;
+    return this.http.get<Insumo[]>(url);
+  }
+
   buscarInsumoPorId(id: String): Observable<Insumo> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Insumo>(url);

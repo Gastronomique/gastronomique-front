@@ -39,7 +39,7 @@ export class InsumoPregaoCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.insumoPregao.pregao.id = this.idPregao!;
-    this.buscarTodosInsumos();
+    this.buscarTodosInsumosDoPregao("PREGAO");
   }
 
   inserirInsumoPregao(): void {
@@ -53,8 +53,8 @@ export class InsumoPregaoCreateComponent implements OnInit {
     );
   }
 
-  buscarTodosInsumos() {
-    this.insumoService.buscarTodosInsumos().subscribe((resposta) => {
+  buscarTodosInsumosDoPregao(pregao: String) {
+    this.insumoService.buscarInsumosPorTipo(pregao).subscribe((resposta) => {
       this.insumos = resposta;
     })
   }

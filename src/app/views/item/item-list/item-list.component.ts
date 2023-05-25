@@ -18,6 +18,7 @@ export class ItemListComponent implements OnInit {
   aula!: Aula;
   displayedColumns: string[] = ['insumo', 'unidade', 'quantidade', 'valorUnitario', 'valorTotal', 'observacao', 'acoes'];
   idAula!: string;
+  isAdmin: boolean = false;
 
   constructor(
     private service: ItemService,
@@ -31,6 +32,10 @@ export class ItemListComponent implements OnInit {
     this.idAula = this.route.snapshot.paramMap.get('id')!;
     this.buscarItensAula(this.route.snapshot.paramMap.get('id')!);
     this.buscarDadosDaAula(this.route.snapshot.paramMap.get('id')!);
+
+    if(this.location.path().includes("/admin/listagem/requisicoes/itens/")) {
+      this.isAdmin = true;
+    }
   }
 
   buscarItensAula(idAula: String) {
@@ -75,7 +80,12 @@ export class ItemListComponent implements OnInit {
   }
 
   navegarParaListagemDeAulas(): void {
-    // this.router.navigate([`aula/listagem`]);
-    this.location.back();
+    console.log(this.location.path());
+    if(this.isAdmin) {
+      this.router.navigate([`admin/listagem/requisicoes`]);
+    } else {
+      this.router.navigate([`aula/listagem`]);
+    }
   }
+  
 }

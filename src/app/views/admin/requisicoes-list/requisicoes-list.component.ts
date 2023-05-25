@@ -42,7 +42,8 @@ export class RequisicoesListComponent implements OnInit {
   }
 
   listarItensAula(idAula: String) {
-    this.router.navigate([`aula/itens/${idAula}`]);
+    this.router.navigate([`admin/listagem/requisicoes/itens/${idAula}`]);
+    //this.router.navigate([`aula/itens/${idAula}`]);
   }
 
   formatarData(data: any): any {

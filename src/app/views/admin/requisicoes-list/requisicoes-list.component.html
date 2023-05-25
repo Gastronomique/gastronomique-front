@@ -50,14 +50,11 @@
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let row">
-              <button (click)="editarAula(row.id)" mat-stroked-button color="primary">
-                <i class="bi bi-pencil-square"></i>
-              </button>
               <button (click)="listarItensAula(row.id)" mat-stroked-button color="accent">
-                <i class="bi bi-box2-heart"></i>
+                itens <i class="bi bi-box2-heart"></i>
               </button>
-              <button (click)="excluirAula(row.id)" mat-stroked-button color="warn">
-                <i class="bi bi-trash3"></i>
+              <button (click)="listarItensAula(row.id)" mat-stroked-button color="primary">
+                aprovar<i class="bi bi-check-lg"></i>
               </button>
             </td>
           </ng-container>

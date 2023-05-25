@@ -179,6 +179,10 @@ const routes: Routes = [
     component: RequisicoesListComponent
   },
   {
+    path: 'admin/listagem/requisicoes/itens/:id',
+    component: ItemListComponent
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

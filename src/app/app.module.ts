@@ -57,6 +57,7 @@ import { InsumoPregaoCreateComponent } from './views/insumo-pregao/insumo-pregao
 import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-list/insumo-pregao-list.component';
 import { UserListComponent } from './views/admin/user-list/user-list.component';
 import { RequisicoesListComponent } from './views/admin/requisicoes-list/requisicoes-list.component';
+import { ItemEditComponent } from './views/item/item-edit/item-edit.component';
 
 registerLocaleData(localePt, "pt");
 
@@ -98,6 +99,7 @@ registerLocaleData(localePt, "pt");
     InsumoPregaoListComponent,
     UserListComponent,
     RequisicoesListComponent,
+    ItemEditComponent,
   ],
   imports: [
     BrowserModule,

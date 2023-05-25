@@ -34,3 +34,8 @@ td {
 table {
   border-radius: 25px;
 }
+
+button {
+  margin-top: 3px;
+  margin-left: 10px;
+}

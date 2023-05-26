@@ -12,4 +12,5 @@ export class Aula {
     laboratorio!: Laboratorio;
     dataUtilizacao!: String;
     valor!: Number;
+    status!: String;
   }

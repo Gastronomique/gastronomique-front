@@ -14,7 +14,7 @@ import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.comp
 export class UserListComponent implements OnInit {
 
   usuarios: Usuario[] = [];
-  displayedColumns: string[] = ['id', 'username', 'fullName', 'acoes'];
+  displayedColumns: string[] = ['id', 'username', 'fullName', 'ativo', 'roles', 'acoes'];
 
   constructor(
     private service: UsuarioService,
@@ -89,6 +89,22 @@ export class UserListComponent implements OnInit {
         });
       }
     });
+  }
+
+  isActive(active: boolean): String {
+    if(active) {
+      return "Ativo"
+    } else {
+      return "Desativado"
+    }
+  }
+
+  isAdmin(roles: []): String {
+    if(roles.length > 1) {
+      return "Administrador";
+    } else {
+      return "Professor";
+    }
   }
 
 }

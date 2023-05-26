@@ -27,7 +27,8 @@ export class AulaCreateComponent implements OnInit {
     disciplina: new Disciplina(),
     laboratorio: new Laboratorio(),
     dataUtilizacao: '',
-    valor: 0
+    valor: 0,
+    status: 'EDICAO'
   };
 
   pregoes: Pregao[] = [];
@@ -61,9 +62,9 @@ export class AulaCreateComponent implements OnInit {
     this.service.inserirAula(this.aula).subscribe(
       () => {
         this.router.navigate(['aula/listagem']);
-        this.service.mensagem("Requisição feita com sucesso!");
+        this.service.mensagem("Aula criada com sucesso! Clique em 'itens' para adicionar insumos...");
       }, err => {
-        this.service.mensagem("Problema ao fazer requisição, confira os campos do formulário!");
+        this.service.mensagem("Problema ao criar aula, confira os campos do formulário!");
       }
     );
   }

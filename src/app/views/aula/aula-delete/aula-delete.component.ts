@@ -22,7 +22,8 @@ export class AulaDeleteComponent implements OnInit {
     disciplina: new Disciplina(),
     laboratorio: new Laboratorio(),
     dataUtilizacao: '',
-    valor: 0
+    valor: 0,
+    status: ''
   }
 
   constructor(

@@ -22,6 +22,16 @@
             <td mat-cell *matCellDef="let row"> {{ row.fullName }} </td>
           </ng-container>
 
+          <ng-container matColumnDef="ativo">
+            <th mat-header-cell *matHeaderCellDef>Ativo</th>
+            <td mat-cell *matCellDef="let row"> {{ isActive(row.active) }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="roles">
+            <th mat-header-cell *matHeaderCellDef>Administrador</th>
+            <td mat-cell *matCellDef="let row"> {{ isAdmin(row.roles) }} </td>
+          </ng-container>
+
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let row">

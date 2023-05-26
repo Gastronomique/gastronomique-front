@@ -38,6 +38,11 @@ export class AulaService {
     return this.http.put<void>(url, aula);
   }
 
+  enviarAula(idAula: String): Observable<void> {
+    const url = `${this.baseUrl}/enviar/${idAula}`;
+    return this.http.put<void>(url, idAula);
+  }
+
   excluirAula(id: String): Observable<void> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<void>(url);

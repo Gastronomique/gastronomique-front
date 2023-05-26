@@ -30,7 +30,8 @@ export class AulaEditComponent implements OnInit {
     disciplina: new Disciplina(),
     laboratorio: new Laboratorio(),
     dataUtilizacao: '',
-    valor: 0
+    valor: 0,
+    status: ''
   };
 
   pregao = new FormControl(0, [Validators.required]);

@@ -51,16 +51,24 @@
             <td mat-cell *matCellDef="let row"> {{ row.valor | currency }} </td>
           </ng-container>
 
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let row"> {{ row.status }} </td>
+          </ng-container>
+
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let row">
-              <button (click)="editarAula(row.id)" mat-button color="primary">
+              <button *ngIf="row.status === 'EDICAO'" (click)="editarAula(row.id)" mat-button color="primary">
                 <i class="bi bi-pencil-square"></i>editar
               </button>
-              <button (click)="listarItensAula(row.id)" mat-button color="accent">
+              <button *ngIf="row.status === 'EDICAO'" (click)="listarItensAula(row.id)" mat-button color="accent">
                 <i class="bi bi-box2-heart"></i> itens
               </button>
-              <button (click)="excluirAula(row.id)" mat-button color="warn">
+              <button *ngIf="row.status === 'EDICAO'" (click)="enviarAula(row.id)" mat-button color="basic">
+                <i class="bi bi-send"></i> enviar aula
+              </button>
+              <button *ngIf="row.status === 'EDICAO'" (click)="excluirAula(row.id)" mat-button color="warn">
                 <i class="bi bi-trash3"></i>excluir
               </button>
             </td>

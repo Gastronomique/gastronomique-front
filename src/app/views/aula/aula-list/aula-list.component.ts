@@ -3,6 +3,7 @@ import { Aula } from '../aula.model';
 import { AulaService } from '../aula.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/security/_services/storage.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-aula-list',
@@ -13,11 +14,16 @@ export class AulaListComponent implements OnInit {
 
   aulas: Aula[] = [];
   aulasPorUsuario: Aula[] = [];
-  displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomePregao', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'acoes'];
+  displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomePregao', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'status', 'acoes'];
 
   idUsuario!: String;
 
-  constructor(private service: AulaService, private router: Router, private usuarioService: StorageService) { }
+  constructor(
+    private service: AulaService,
+    private router: Router,
+    private usuarioService: StorageService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
     this.idUsuario! = this.usuarioService.getUser().id;
@@ -51,6 +57,12 @@ export class AulaListComponent implements OnInit {
 
   listarItensAula(idAula: String) {
     this.router.navigate([`aula/itens/${idAula}`]);
+  }
+
+  enviarAula(idAula: String) {
+    this.service.enviarAula(idAula).subscribe(() => {
+      this.location.historyGo();
+    });
   }
 
   formatarData(data: any): any {

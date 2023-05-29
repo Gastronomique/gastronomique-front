@@ -3,6 +3,8 @@ import { Aula } from '../../aula/aula.model';
 import { AulaService } from '../../aula/aula.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/security/_services/storage.service';
+import { AdminService } from '../admin.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-requisicoes-list',
@@ -13,11 +15,16 @@ export class RequisicoesListComponent implements OnInit {
 
   aulas: Aula[] = [];
   aulasPorUsuario: Aula[] = [];
-  displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomePregao', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'acoes'];
+  displayedColumns: string[] = [ 'descricao', 'nomeUsuario', 'nomePregao', 'nomeDisciplina', 'nomeLaboratorio', 'dataUtilizacao', 'valor', 'status', 'acoes'];
 
   idUsuario!: String;
 
-  constructor(private service: AulaService, private router: Router) { }
+  constructor(
+    private service: AulaService,
+    private router: Router,
+    private adminService: AdminService,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.buscarTodasAulas();
@@ -44,6 +51,10 @@ export class RequisicoesListComponent implements OnInit {
   listarItensAula(idAula: String) {
     this.router.navigate([`admin/listagem/requisicoes/itens/${idAula}`]);
     //this.router.navigate([`aula/itens/${idAula}`]);
+  }
+
+  aprovarAula(idAula: String) {
+    this.adminService.aprovarAula(idAula).subscribe(() => this.location.historyGo());
   }
 
   formatarData(data: any): any {

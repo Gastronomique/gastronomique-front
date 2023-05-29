@@ -62,7 +62,7 @@ export class ItemListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
-        this.service.excluirItemAula(idItemAula).subscribe((resposta) => {
+        this.service.excluirItemAula(idItemAula).subscribe(() => {
           window.location.reload();
         });
       }
@@ -79,6 +79,10 @@ export class ItemListComponent implements OnInit {
     this.router.navigate([`aula/itens/inserir/${this.idAula}`]);
   }
 
+  navegarParaEdicaoItem(itemAulaId: String): void {
+    this.router.navigate([`aula/itens/editar/${itemAulaId}`]);
+  }
+
   navegarParaListagemDeAulas(): void {
     console.log(this.location.path());
     if(this.isAdmin) {
@@ -87,5 +91,5 @@ export class ItemListComponent implements OnInit {
       this.router.navigate([`aula/listagem`]);
     }
   }
-  
+
 }

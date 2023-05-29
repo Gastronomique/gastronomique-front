@@ -58,8 +58,8 @@
 
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Seu usuário possui permissões de:
-      <br> {{ roles[0].slice(5) }}
-      <br> {{ roles[1].slice(5) }}
+      <br> {{ roles[0].slice(5)! }}
+      <br> {{ roles[1].slice(5)! }}
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Usuario } from '../aula/usuario.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,11 @@ export class AdminService {
   tornarUsuarioAdmin(usuario: Usuario) {
     const url = `${this.baseUrl}/tornar/administrador/${usuario.id}`;
     return this.http.put<void>(url, usuario);
+  }
+
+  aprovarAula(idAula: String): Observable<void> {
+    const url = `${this.baseUrl}/aula/aprovar/${idAula}`;
+    return this.http.put<void>(url, idAula);
   }
 
   mensagem(str: String): void {

@@ -31,7 +31,7 @@ export class AulaEditComponent implements OnInit {
     laboratorio: new Laboratorio(),
     dataUtilizacao: '',
     valor: 0,
-    status: ''
+    status: 'EDICAO'
   };
 
   pregao = new FormControl(0, [Validators.required]);

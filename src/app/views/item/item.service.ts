@@ -12,6 +12,11 @@ export class ItemService {
 
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
+  buscarItemAulaPorId(itemAulaId: String) {
+    const url = `${this.baseUrl}/buscar/${itemAulaId}`;
+    return this.http.get<Item>(url);
+  }
+
   buscarItensAula(idAula: String): Observable<Item[]> {
     const url = `${this.baseUrl}/${idAula}`;
     return this.http.get<Item[]>(url);
@@ -21,6 +26,11 @@ export class ItemService {
      const url = `${this.baseUrl}`;
      return this.http.post<Item>(url, itemAula);
   }
+
+  editarItemAula(itemAula: Item): Observable<Item> {
+    const url = `${this.baseUrl}/${itemAula.id}`;
+    return this.http.put<Item>(url, itemAula);
+ }
 
   excluirItemAula(idItemAula: String): Observable<void> {
      const url = `${this.baseUrl}/${idItemAula}`;

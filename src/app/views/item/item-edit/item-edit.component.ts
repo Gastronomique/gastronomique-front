@@ -41,7 +41,6 @@ export class ItemEditComponent implements OnInit {
     private service: ItemService,
     private insumoService: InsumoService,
     private insumoPregaoService: InsumoPregaoService,
-    private aulaService: AulaService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -54,18 +53,21 @@ export class ItemEditComponent implements OnInit {
   buscarItemAulaPorId(itemAulaId: String): void {
     this.service.buscarItemAulaPorId(itemAulaId).subscribe(( (resposta) => {
       this.itemAula = resposta;
+      this.buscarInsumosPorPregao(this.itemAula.aula.pregao.id);
     }));
   }
 
-  buscarAulaPorId(aulaId: String) {
-    this.aulaService.buscarAulaPorId(aulaId).subscribe(resposta => {
-      this.aula = resposta;
+  buscarInsumosTipoProducao() {
+    this.insumoService.buscarInsumosPorTipo("PRODUCAO").subscribe(resposta => {
+      const insumosProducao = resposta;
+      this.insumos = this.insumos.concat(insumosProducao);
     });
   }
 
   buscarInsumosPorPregao(idPregao: String) {
     this.insumoService.buscarInsumosPorPregao(idPregao).subscribe((resposta) => {
       this.insumos = resposta;
+      this.buscarInsumosTipoProducao();
     });
   }
 
@@ -77,7 +79,17 @@ export class ItemEditComponent implements OnInit {
   }
 
   editarItemAula(): void {
-    this.service.editarItemAula(this.itemAula).subscribe(() => {
+    //console.log("ITEM AULA "+ JSON.stringify(this.itemAula));
+    let item = new Item();
+    item.id = this.itemAula.id;
+    item.insumo = new Insumo();
+    item.insumo.id = this.itemAula.insumo.id;
+    item.quantidade = this.itemAula.quantidade;
+    item.observacao = this.itemAula.observacao;
+    item.aula = new Aula();
+    item.aula.id = this.itemAula.aula.id;
+    console.log(JSON.stringify(item));
+    this.service.editarItemAula(item).subscribe(() => {
       this.router.navigate([`aula/itens/${this.itemAula.aula.id}`]);
     });
   }

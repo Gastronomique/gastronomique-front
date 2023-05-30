@@ -62,7 +62,7 @@
               <button *ngIf="row.status === 'EDICAO'" (click)="editarAula(row.id)" mat-button color="primary">
                 <i class="bi bi-pencil-square"></i>editar
               </button>
-              <button *ngIf="row.status === 'EDICAO'" (click)="listarItensAula(row.id)" mat-button color="accent">
+              <button (click)="listarItensAula(row.id)" mat-button color="accent">
                 <i class="bi bi-box2-heart"></i> itens
               </button>
               <button *ngIf="row.status === 'EDICAO'" (click)="enviarAula(row.id)" mat-button color="basic">

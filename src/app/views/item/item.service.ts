@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { Item } from './item.model';
+import { ItemDto } from './itemDto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,11 @@ export class ItemService {
     return this.http.get<Item>(url);
   }
 
+  buscarItemAulaDtoPorId(itemAulaId: String) {
+    const url = `${this.baseUrl}/buscar/${itemAulaId}`;
+    return this.http.get<ItemDto>(url);
+  }
+
   buscarItensAula(idAula: String): Observable<Item[]> {
     const url = `${this.baseUrl}/${idAula}`;
     return this.http.get<Item[]>(url);
@@ -27,9 +33,9 @@ export class ItemService {
      return this.http.post<Item>(url, itemAula);
   }
 
-  editarItemAula(itemAula: Item): Observable<Item> {
+  editarItemAula(itemAula: ItemDto): Observable<ItemDto> {
     const url = `${this.baseUrl}/${itemAula.id}`;
-    return this.http.put<Item>(url, itemAula);
+    return this.http.put<ItemDto>(url, itemAula);
  }
 
   excluirItemAula(idItemAula: String): Observable<void> {

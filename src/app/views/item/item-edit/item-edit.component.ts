@@ -9,6 +9,7 @@ import { Aula } from '../../aula/aula.model';
 import { Insumo } from '../../insumo/insumo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { InsumoPregao } from '../../insumo-pregao/insumo-pregao.model';
+import { ItemDto } from '../itemDto';
 
 @Component({
   selector: 'app-item-edit',
@@ -23,14 +24,13 @@ export class ItemEditComponent implements OnInit {
 
   insumos!: Insumo[];
 
-  itemAula: Item = {
+  itemAula: ItemDto = {
     id: '',
-    aula: new Aula(),
-    insumo: new Insumo(),
-    quantidade: 0,
+    idAula: '',
+    idInsumo: '',
     observacao: '',
-    valorUnitario: 0,
-    valorTotal: 0
+    quantidade: 0,
+    valorUnitario: 0
   }
 
   insumo = new FormControl('', [Validators.required]);
@@ -41,6 +41,7 @@ export class ItemEditComponent implements OnInit {
     private service: ItemService,
     private insumoService: InsumoService,
     private insumoPregaoService: InsumoPregaoService,
+    private aulaService: AulaService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -51,10 +52,17 @@ export class ItemEditComponent implements OnInit {
   }
 
   buscarItemAulaPorId(itemAulaId: String): void {
-    this.service.buscarItemAulaPorId(itemAulaId).subscribe(( (resposta) => {
+    this.service.buscarItemAulaDtoPorId(itemAulaId).subscribe(( (resposta) => {
       this.itemAula = resposta;
-      this.buscarInsumosPorPregao(this.itemAula.aula.pregao.id);
+      this.buscarAulaPorId(resposta.idAula);
     }));
+  }
+
+  buscarAulaPorId(idAula: String) {
+    this.aulaService.buscarAulaPorId(idAula).subscribe(resposta => {
+      this.aula = resposta;
+      this.buscarInsumosPorPregao(this.aula.pregao.id);
+    });
   }
 
   buscarInsumosTipoProducao() {
@@ -79,22 +87,12 @@ export class ItemEditComponent implements OnInit {
   }
 
   editarItemAula(): void {
-    //console.log("ITEM AULA "+ JSON.stringify(this.itemAula));
-    let item = new Item();
-    item.id = this.itemAula.id;
-    item.insumo = new Insumo();
-    item.insumo.id = this.itemAula.insumo.id;
-    item.quantidade = this.itemAula.quantidade;
-    item.observacao = this.itemAula.observacao;
-    item.aula = new Aula();
-    item.aula.id = this.itemAula.aula.id;
-    console.log(JSON.stringify(item));
-    this.service.editarItemAula(item).subscribe(() => {
-      this.router.navigate([`aula/itens/${this.itemAula.aula.id}`]);
+    this.service.editarItemAula(this.itemAula).subscribe(() => {
+      this.router.navigate([`aula/itens/${this.itemAula.idAula}`]);
     });
   }
 
   cancelar(): void {
-    this.router.navigate([`aula/itens/${this.itemAula.aula.id}`]);
+    this.router.navigate([`aula/itens/${this.itemAula.idAula}`]);
   }
 }

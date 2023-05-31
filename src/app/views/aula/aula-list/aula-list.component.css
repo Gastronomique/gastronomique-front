@@ -19,17 +19,11 @@
   margin-bottom: 5px;
 }
 
-.mat-button {
-  font-size: 14px;
-  /* padding: 4px 8px; */
-  min-width: 0;
-}
-
-.mat-cell .mat-button {
-  margin-right: 3px;
-}
-
-.mat-button .bi {
-  vertical-align: middle;
-  margin-right: 0px;
+#btn-acao-editar,
+#btn-acao-itens,
+#btn-acao-editar {
+  text-align: center;
+  display: inline;
+  margin: 3px;
+  padding: 3px;
 }

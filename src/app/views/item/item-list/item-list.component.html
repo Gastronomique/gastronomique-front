@@ -4,7 +4,7 @@
         <h1>Listagem de itens da aula: {{ aula.descricao }}({{ formatarData(aula.dataUtilizacao) }})</h1>
     </div>
 
-    <button (click)="navegarParaInsercaoDeItens()" mat-stroked-button color="primary" id="btn-novo-curso">
+    <button *ngIf="aula.status === 'EDICAO'" (click)="navegarParaInsercaoDeItens()" mat-stroked-button color="primary" id="btn-novo-curso">
       <i class="bi bi-plus-lg"></i> Novo Item
     </button>
 
@@ -50,14 +50,16 @@
               <td mat-cell *matCellDef="let row">
                 <button
                   *ngIf="!isAdmin"
+                  [disabled]="aula.status != 'EDICAO'"
                   (click)="excluirItemAulaDialog(row.id)"
-                  mat-stroked-button color="warn">
+                  mat-button color="warn">
                   <i class="bi bi-trash3"></i>excluir
                 </button>
                 <button
                   *ngIf="!isAdmin"
+                  [disabled]="aula.status != 'EDICAO'"
                   (click)="navegarParaEdicaoItem(row.id)"
-                  mat-stroked-button color="primary">
+                  mat-button color="primary">
                   <i class="bi bi-pencil-square"></i>editar
                 </button>
               </td>

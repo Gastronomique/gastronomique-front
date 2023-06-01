@@ -64,18 +64,18 @@
               </button>
               <mat-menu #menuAcoes="matMenu">
                 <button id="btn-acao-editar" *ngIf="row.status === 'EDICAO'" (click)="editarAula(row.id)" mat-button color="primary">
-                  <i class="bi bi-pencil-square"></i>editar
+                  <i class="bi bi-pencil-square"></i> editar
                 </button>
                 <button id="btn-acao-itens" (click)="listarItensAula(row.id)" mat-button color="accent">
-                  <i class="bi bi-box2-heart"></i>ver itens
+                  <i class="bi bi-box2-heart"></i> ver itens
                 </button>
                 <button id="btn-acao-excluir" *ngIf="row.status === 'EDICAO'" (click)="excluirAula(row.id)" mat-button color="warn">
-                  <i class="bi bi-trash3"></i>excluir
+                  <i class="bi bi-trash3"></i> excluir
+                </button>
+                <button id="btn-acao-enviar" *ngIf="row.status === 'EDICAO'" (click)="enviarAula(row.id)" mat-button color="primary">
+                  <i class="bi bi-send"></i> enviar aula
                 </button>
               </mat-menu>
-              <button *ngIf="row.status === 'EDICAO'" (click)="enviarAula(row.id)" mat-button color="primary">
-                <i class="bi bi-send"></i> enviar aula
-              </button>
             </td>
           </ng-container>
 

@@ -37,6 +37,7 @@ import { InsumoPregaoListComponent } from './views/insumo-pregao/insumo-pregao-l
 import { UserListComponent } from './views/admin/user-list/user-list.component';
 import { RequisicoesListComponent } from './views/admin/requisicoes-list/requisicoes-list.component';
 import { ItemEditComponent } from './views/item/item-edit/item-edit.component';
+import { GerarListaComponent } from './views/admin/compra/gerar-lista/gerar-lista.component';
 
 const routes: Routes = [
   {
@@ -186,6 +187,10 @@ const routes: Routes = [
   {
     path: 'admin/listagem/requisicoes/itens/:id',
     component: ItemListComponent
+  },
+  {
+    path: 'admin/gerar/lista/compras',
+    component: GerarListaComponent
   },
   {
     path: '',

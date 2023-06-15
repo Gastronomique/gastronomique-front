@@ -38,6 +38,7 @@ import { UserListComponent } from './views/admin/user-list/user-list.component';
 import { RequisicoesListComponent } from './views/admin/requisicoes-list/requisicoes-list.component';
 import { ItemEditComponent } from './views/item/item-edit/item-edit.component';
 import { GerarListaComponent } from './views/admin/compra/gerar-lista/gerar-lista.component';
+import { ListagemComponent } from './views/admin/compra/listagem/listagem.component';
 
 const routes: Routes = [
   {
@@ -189,7 +190,11 @@ const routes: Routes = [
     component: ItemListComponent
   },
   {
-    path: 'admin/gerar/lista/compras',
+    path: 'admin/listagem/lista/compras',
+    component: ListagemComponent
+  },
+  {
+    path: 'admin/gerar/lista/compra',
     component: GerarListaComponent
   },
   {

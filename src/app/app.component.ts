@@ -104,7 +104,7 @@ export class AppComponent {
     this.router.navigate(['admin/listagem/requisicoes']);
   }
 
-  navegarGerarListaDeCompras(): void {
-    this.router.navigate(['admin/gerar/lista/compras']);
+  navegarParaListagemDeListaDeCompras(): void {
+    this.router.navigate(['admin/listagem/lista/compras']);
   }
 }

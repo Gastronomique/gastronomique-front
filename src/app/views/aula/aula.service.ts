@@ -18,6 +18,11 @@ export class AulaService {
     return this.http.get<Aula[]>(url);
   }
 
+  buscarTodasAulasEmRevisao(): Observable<Aula[]> {
+    const url = `${this.baseUrl}/revisao`;
+    return this.http.get<Aula[]>(url);
+  }
+
   buscarAulasPorUsuario(idUsuario: String): Observable<Aula[]> {
     const url = `${this.baseUrl}/usuario/${idUsuario}`;
     return this.http.get<Aula[]>(url);

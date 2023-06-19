@@ -33,3 +33,11 @@ button {
   margin-top: 3px;
   margin-left: 10px;
 }
+
+#btn-acao-itens,
+#btn-acao-aprovar {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

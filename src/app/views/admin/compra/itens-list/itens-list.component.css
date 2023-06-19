@@ -16,18 +16,6 @@
 }
 
 .table button {
+  margin-top: 3px;
   margin-right: 4px;
-}
-
-#btn-novo-pregao {
-  margin-bottom: 5px;
-}
-
-#btn-acao-editar,
-#btn-acao-insumos,
-#btn-acao-excluir {
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  align-items: center;
 }

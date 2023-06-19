@@ -7,7 +7,7 @@
     <button (click)="novaListaDeCompras()" mat-stroked-button color="primary" id="btn-nova-lista-de-compras">
         <i class="bi bi-plus-lg"></i> Nova Lista De Compras
     </button>
-  
+
     <div class="mat-elevation-z8 content-table">
         <table class="table" mat-table [dataSource]="listasDeCompra">
 
@@ -15,24 +15,23 @@
               <th mat-header-cell *matHeaderCellDef> Id </th>
               <td mat-cell *matCellDef="let row"> {{ row.id }} </td>
             </ng-container>
-  
+
             <ng-container matColumnDef="dataCriacao">
               <th mat-header-cell *matHeaderCellDef> Criada Em </th>
-              <td mat-cell *matCellDef="let row"> {{ row.dataCriacao }} </td>
+              <td mat-cell *matCellDef="let row"> {{ formatarData(row.dataCriacao) }} </td>
             </ng-container>
-  
+
             <ng-container matColumnDef="acoes">
               <th mat-header-cell *matHeaderCellDef> Ações </th>
               <td mat-cell *matCellDef="let row">
-                <button mat-stroked-button color="accent">
+                <button (click)="navegarParaItensDaListaDeCompra(row.id)" mat-button color="accent">
                   itens <i class="bi bi-box2-heart"></i>
                 </button>
               </td>
             </ng-container>
-  
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
     </div>
   </div>
-  

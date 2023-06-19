@@ -27,11 +27,11 @@ export class RequisicoesListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.buscarTodasAulas();
+    this.buscarTodasAulasEmRevisao();
   }
 
-  buscarTodasAulas() {
-    this.service.buscarTodasAulas().subscribe(resposta => {
+  buscarTodasAulasEmRevisao() {
+    this.service.buscarTodasAulasEmRevisao().subscribe(resposta => {
       this.aulas = resposta;
     })
   }

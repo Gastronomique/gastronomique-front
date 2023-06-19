@@ -36,6 +36,10 @@ export class ListagemComponent implements OnInit {
     this.router.navigate([`admin/gerar/lista/compra`]);
   }
 
+  navegarParaItensDaListaDeCompra(idListaDeCompra: Number) {
+    this.router.navigate([`admin/listagem/lista/compras/${idListaDeCompra}`]);
+  }
+
   formatarData(data: any): any {
     const partes = data.split('-');
     const dataInvertida = partes.reverse().join('/');

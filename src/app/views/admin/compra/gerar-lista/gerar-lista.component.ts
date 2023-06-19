@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Aula } from 'src/app/views/aula/aula.model';
 import { AulaService } from 'src/app/views/aula/aula.service';
+import { ListaDeCompraService } from '../lista-de-compra.service';
 
 @Component({
   selector: 'app-gerar-lista',
@@ -16,8 +17,11 @@ export class GerarListaComponent implements OnInit {
 
   idUsuario!: String;
 
+  idAulasListaDeCompra: Number[] = [];
+
   constructor(
     private service: AulaService,
+    private listaDeCompraService: ListaDeCompraService,
     private router: Router
   ) { }
 
@@ -52,4 +56,26 @@ export class GerarListaComponent implements OnInit {
     const dataInvertida = partes.reverse().join('/');
     return dataInvertida;
   }
+
+  adicionarAulaParaListaDeCompra(aulaId: number, checked: boolean): void {
+    if (checked) {
+      // Se o checkbox estiver marcado, adiciona o ID da aula ao array
+      this.idAulasListaDeCompra.push(aulaId);
+    } else {
+      // Se o checkbox estiver desmarcado, remove o ID da aula do array
+      const index = this.idAulasListaDeCompra.indexOf(aulaId);
+      if (index >= 0) {
+        this.idAulasListaDeCompra.splice(index, 1);
+      }
+    }
+  }
+
+  gerarListaDeCompra() {
+    console.log(this.idAulasListaDeCompra);
+    this.listaDeCompraService.gerarListaDeCompra(this.idAulasListaDeCompra).subscribe(() => {
+      this.listaDeCompraService.mensagem("Lista De Compra Criada Com Sucesso!");
+      this.router.navigate(["admin/listagem/lista/compras"]);
+    });
+  }
+
 }

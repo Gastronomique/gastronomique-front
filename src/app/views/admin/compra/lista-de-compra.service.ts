@@ -17,6 +17,11 @@ export class ListaDeCompraService {
     return this.http.get<ListaDeCompra[]>(url);
   }
 
+  gerarListaDeCompra(idDasAulas: Number[]): Observable<ListaDeCompra[]> {
+    const url = `${this.baseUrl}`;
+    return this.http.post<ListaDeCompra[]>(url, idDasAulas);
+  }
+
   mensagem(str: String): void {
     this._snack.open(`${str}`, 'OK', {
       horizontalPosition: 'center',
@@ -24,5 +29,5 @@ export class ListaDeCompraService {
       duration: 4000
     })
   }
-  
+
 }

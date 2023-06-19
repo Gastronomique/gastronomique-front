@@ -22,3 +22,12 @@
 #btn-novo-curso {
   margin-bottom: 5px;
 }
+
+#btn-acao-editar,
+#btn-acao-disciplinas,
+#btn-acao-excluir {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

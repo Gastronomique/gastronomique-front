@@ -48,20 +48,28 @@
             <ng-container matColumnDef="acoes">
               <th  mat-header-cell *matHeaderCellDef> Ações </th>
               <td mat-cell *matCellDef="let row">
-                <button
-                  *ngIf="!isAdmin"
-                  [disabled]="aula.status != 'EDICAO'"
-                  (click)="excluirItemAulaDialog(row.id)"
-                  mat-button color="warn">
-                  <i class="bi bi-trash3"></i>excluir
+
+                <button id="btn-acoes" mat-button color="accent" [matMenuTriggerFor]="menuAcoes">
+                  <i class="bi bi-gear"></i> Ações
                 </button>
-                <button
-                  *ngIf="!isAdmin"
-                  [disabled]="aula.status != 'EDICAO'"
-                  (click)="navegarParaEdicaoItem(row.id)"
-                  mat-button color="primary">
-                  <i class="bi bi-pencil-square"></i>editar
-                </button>
+                <mat-menu #menuAcoes="matMenu">
+                    <button
+                    id="btn-acao-excluir"
+                    *ngIf="!isAdmin"
+                    [disabled]="aula.status != 'EDICAO'"
+                    (click)="excluirItemAulaDialog(row.id)"
+                    mat-button color="warn">
+                    <i class="bi bi-trash3"></i>excluir
+                  </button>
+                  <button
+                    id="btn-acao-editar"
+                    *ngIf="!isAdmin"
+                    [disabled]="aula.status != 'EDICAO'"
+                    (click)="navegarParaEdicaoItem(row.id)"
+                    mat-button color="primary">
+                    <i class="bi bi-pencil-square"></i>editar
+                  </button>
+                </mat-menu>
               </td>
             </ng-container>
 

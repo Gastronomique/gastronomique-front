@@ -36,6 +36,10 @@ export class ListagemComponent implements OnInit {
     this.router.navigate([`admin/gerar/lista/compra`]);
   }
 
+  gerarPdfListaDeCompra(idListaDeCompra: Number) {
+    this.listaDeCompraService.gerarPdfListaDeCompra(idListaDeCompra);
+  }
+
   navegarParaItensDaListaDeCompra(idListaDeCompra: Number) {
     this.router.navigate([`admin/listagem/lista/compras/${idListaDeCompra}`]);
   }

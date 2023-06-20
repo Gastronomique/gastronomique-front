@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ListaDeCompra } from './listaDeCompra.model';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,22 @@ export class ListaDeCompraService {
   gerarListaDeCompra(idDasAulas: Number[]): Observable<ListaDeCompra[]> {
     const url = `${this.baseUrl}`;
     return this.http.post<ListaDeCompra[]>(url, idDasAulas);
+  }
+
+  gerarPdfListaDeCompra(idListaDeCompra: Number) {
+    const url = `${this.baseUrl}/pdf/${idListaDeCompra}`;
+    return this.http.get(url, { responseType: 'blob' }).pipe(
+      tap((response: Blob) => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        const urlCreator = window.URL || window.webkitURL;
+        const pdfUrl = urlCreator.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'lista_de_compra.pdf';
+        link.target = '_blank';
+        link.click();
+      })
+    ).subscribe();
   }
 
   mensagem(str: String): void {

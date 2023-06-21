@@ -22,7 +22,7 @@ export class ListaDeCompraService {
     return this.http.post<ListaDeCompra[]>(url, idDasAulas);
   }
 
-  gerarPdfListaDeCompra(idListaDeCompra: Number) {
+  gerarPdfListaDeCompra(idListaDeCompra: Number, listaDeCompra: ListaDeCompra) {
     const url = `${this.baseUrl}/pdf/${idListaDeCompra}`;
     return this.http.get(url, { responseType: 'blob' }).pipe(
       tap((response: Blob) => {
@@ -31,7 +31,7 @@ export class ListaDeCompraService {
         const pdfUrl = urlCreator.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = pdfUrl;
-        link.download = 'lista_de_compra.pdf';
+        link.download = `${listaDeCompra.dataCriacao}.pdf`;
         link.target = '_blank';
         link.click();
       })

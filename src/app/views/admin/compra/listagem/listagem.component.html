@@ -32,7 +32,7 @@
                   <button id="btn-acao-itens" (click)="navegarParaItensDaListaDeCompra(row.id)" mat-button color="accent">
                     itens <i class="bi bi-box2-heart"></i>
                   </button>
-                  <button id="btn-acao-pdf" (click)="gerarPdfListaDeCompra(row.id)" mat-button color="warn">
+                  <button id="btn-acao-pdf" (click)="gerarPdfListaDeCompra(row.id, row)" mat-button color="warn">
                     gerar <i class="bi bi-filetype-pdf"></i>
                   </button>
                 </mat-menu>

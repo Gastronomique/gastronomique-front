@@ -12,7 +12,7 @@ export class ItensListComponent implements OnInit {
 
   idListaDeCompra!: any;
   itensDaListaDeCompra: ItemListaDeCompra[] = [];
-  displayedColumns: string[] = ['insumo', 'unidade', 'quantidade'];
+  displayedColumns: string[] = ['insumo', 'unidade', 'quantidade', 'valor'];
 
   constructor(
     private service: ItemListaDeCompraService,

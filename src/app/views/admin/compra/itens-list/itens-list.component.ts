@@ -31,4 +31,8 @@ export class ItensListComponent implements OnInit {
     });
   }
 
+  navegarParaListagemDeCompras() {
+    this.router.navigate([`admin/listagem/lista/compras`]);
+  }
+
 }

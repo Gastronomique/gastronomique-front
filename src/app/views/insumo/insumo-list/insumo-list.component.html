@@ -9,10 +9,7 @@
       <i class="bi bi-plus-lg"></i> Novo Insumo
     </button>
     <mat-form-field>
-      <input matInput
-       placeholder="Informe o nome do insumo para pesquisar..."
-       [(ngModel)]="termoDePesquisa"
-      >
+      <input matInput placeholder="Informe o nome do insumo para pesquisar..." (input)="aplicarFiltro($event)">
     </mat-form-field>
     <mat-icon matPrefix>
       <i class="bi bi-search"></i>
@@ -20,7 +17,7 @@
   </div>
 
   <div class="mat-elevation-z8 content-table">
-      <table class="table" mat-table [dataSource]="filtroInsumos">
+      <table class="table" mat-table [dataSource]="dataSource">
           <!-- Position Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>Id</th>
@@ -66,7 +63,14 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
         </table>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 15, 20, 50]"
+          [length]="totalItems"
+          [pageSize]="pageSize"
+          [pageIndex]="pageIndex"
+          (page)="onPageChange($event)"
+          >
+        </mat-paginator>
   </div>
 </div>

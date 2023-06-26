@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Insumo } from './insumo.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Pageable } from './pageable.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class InsumoService {
   buscarTodosInsumos(): Observable<Insumo[]> {
     const url = `${this.baseUrl}`;
     return this.http.get<Insumo[]>(url);
+  }
+
+  buscarTodosInsumosPageable(page: number, size: number): Observable<Pageable> {
+    const url = `${this.baseUrl}/pageable?page=${page}&size=${size}`;
+    return this.http.get<any>(url);
   }
 
   buscarInsumosPorPregao(idPregao: String): Observable<Insumo[]> {

@@ -91,6 +91,25 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  retirarPermissaoUsuarioAdmin(usuario: Usuario) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        message: 'Tem certeza que deseja retirar a permissão de administrador?',
+        buttonText: {
+          ok: 'Sim',
+          cancel: 'Cancelar'
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.adminService.retirarPermissaoUsuarioAdmin(usuario).subscribe((resposta) => {
+          window.location.reload();
+        });
+      }
+    });
+  }
+
   isActive(active: boolean): String {
     if(active) {
       return "Ativo"

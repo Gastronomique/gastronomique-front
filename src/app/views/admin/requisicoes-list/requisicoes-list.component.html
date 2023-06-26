@@ -61,6 +61,9 @@
                 <button id="btn-acao-aprovar" *ngIf="row.status === 'REVISAO'" (click)="aprovarAula(row.id)" mat-button color="primary">
                   aprovar<i class="bi bi-check-lg"></i>
                 </button>
+                <button id="btn-acao-aprovar" *ngIf="row.status === 'REVISAO'" (click)="devolverAula(row.id)" mat-button color="warn">
+                  devolver<i class="bi bi-x-lg"></i>
+                </button>
               </mat-menu>
             </td>
           </ng-container>

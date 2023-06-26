@@ -28,8 +28,18 @@ export class AdminService {
     return this.http.put<void>(url, usuario);
   }
 
+  retirarPermissaoUsuarioAdmin(usuario: Usuario) {
+    const url = `${this.baseUrl}/retirar/administrador/${usuario.id}`;
+    return this.http.put<void>(url, usuario);
+  }
+
   aprovarAula(idAula: String): Observable<void> {
     const url = `${this.baseUrl}/aula/aprovar/${idAula}`;
+    return this.http.put<void>(url, idAula);
+  }
+
+  devolverAula(idAula: String): Observable<void> {
+    const url = `${this.baseUrl}/aula/devolver/${idAula}`;
     return this.http.put<void>(url, idAula);
   }
 

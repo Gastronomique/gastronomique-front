@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -128,7 +129,8 @@ registerLocaleData(localePt, "pt");
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   providers: [
     httpInterceptorProviders,

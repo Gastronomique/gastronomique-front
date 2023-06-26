@@ -18,7 +18,8 @@
 
 #btn-acao-ativar-usuario,
 #btn-acao-desativar-usuario,
-#btn-acao-tornar-admin {
+#btn-acao-tornar-admin,
+#btn-acao-retirar-permissao-admin {
   text-align: center;
   justify-content: center;
   display: flex;

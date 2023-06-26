@@ -4,6 +4,10 @@
       <h1>Listagem de itens da lista de compra</h1>
   </div>
 
+  <button (click)="navegarParaListagemDeCompras()" mat-stroked-button color="accent" id="btn-voltar">
+    <i class="bi bi-arrow-90deg-left"></i> Voltar
+  </button>
+
   <div class="mat-elevation-z8 content-table">
       <table class="table" mat-table [dataSource]="itensDaListaDeCompra">
           <!-- Position Column -->

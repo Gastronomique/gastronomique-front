@@ -57,6 +57,10 @@ export class RequisicoesListComponent implements OnInit {
     this.adminService.aprovarAula(idAula).subscribe(() => this.location.historyGo());
   }
 
+  devolverAula(idAula: String) {
+    this.adminService.devolverAula(idAula).subscribe(() => this.location.historyGo());
+  }
+
   formatarData(data: any): any {
     const partes = data.split('-');
     const dataInvertida = partes.reverse().join('/');

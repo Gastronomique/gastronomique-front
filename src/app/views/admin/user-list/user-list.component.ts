@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+import { InfoDialogComponent } from '../../info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -105,6 +106,32 @@ export class UserListComponent implements OnInit {
       if (confirmed) {
         this.adminService.retirarPermissaoUsuarioAdmin(usuario).subscribe((resposta) => {
           window.location.reload();
+        });
+      }
+    });
+  }
+
+  resetarSenha(usuario : Usuario) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        message: `Tem certeza que deseja resetar a senha deste usuário? (${usuario.fullName})`,
+        buttonText: {
+          ok: 'Sim',
+          cancel: 'Cancelar'
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.adminService.resetarSenha(usuario.id!).subscribe(() => {
+          this.dialog.open(InfoDialogComponent, {
+            data: {
+              message: `Senha resetada para: gastronomique123`,
+              buttonText : {
+                ok: 'OK'
+              }
+            }
+          });
         });
       }
     });

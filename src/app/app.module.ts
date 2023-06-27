@@ -63,6 +63,7 @@ import { ItemEditComponent } from './views/item/item-edit/item-edit.component';
 import { GerarListaComponent } from './views/admin/compra/gerar-lista/gerar-lista.component';
 import { ListagemComponent } from './views/admin/compra/listagem/listagem.component';
 import { ItensListComponent } from './views/admin/compra/itens-list/itens-list.component';
+import { InfoDialogComponent } from './views/info-dialog/info-dialog.component';
 
 registerLocaleData(localePt, "pt");
 
@@ -108,6 +109,7 @@ registerLocaleData(localePt, "pt");
     GerarListaComponent,
     ListagemComponent,
     ItensListComponent,
+    InfoDialogComponent,
   ],
   imports: [
     BrowserModule,

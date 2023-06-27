@@ -43,6 +43,11 @@ export class AdminService {
     return this.http.put<void>(url, idAula);
   }
 
+  resetarSenha(userId: String): Observable<void> {
+    const url = `${this.baseUrl}/resetar/senha/${userId}`;
+    return this.http.put<void>(url, userId);
+  }
+
   mensagem(str: String): void {
     this._snack.open(`${str}`, 'OK', {
       horizontalPosition: 'center',

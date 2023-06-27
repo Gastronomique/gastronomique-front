@@ -22,7 +22,7 @@
         <mat-label>Quantidade: </mat-label>
         <input
           matInput
-          type="text"
+          type="number"
           [(ngModel)]="itemAula.quantidade"
           [formControl]="quantidade">
         <mat-error *ngIf="quantidade.invalid">

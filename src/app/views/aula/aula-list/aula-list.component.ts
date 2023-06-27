@@ -4,6 +4,8 @@ import { AulaService } from '../aula.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/security/_services/storage.service';
 import { Location } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-aula-list',
@@ -22,7 +24,8 @@ export class AulaListComponent implements OnInit {
     private service: AulaService,
     private router: Router,
     private usuarioService: StorageService,
-    private location: Location
+    private location: Location,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -60,8 +63,21 @@ export class AulaListComponent implements OnInit {
   }
 
   enviarAula(idAula: String) {
-    this.service.enviarAula(idAula).subscribe(() => {
-      this.location.historyGo();
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        message: 'Tem certeza que deseja realizar o envio dessa aula para revisão do administrador?',
+        buttonText: {
+          ok: 'Sim',
+          cancel: 'Cancelar'
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.service.enviarAula(idAula).subscribe(() => {
+          this.location.historyGo();
+        })
+      }
     });
   }
 
